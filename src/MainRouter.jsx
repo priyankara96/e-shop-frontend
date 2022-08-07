@@ -11,7 +11,7 @@ export default class MainRouter extends Component {
   render() {
     return (
           <BrowserRouter>
-            <div style={{ backgroundColor: "#D0D3D4", margin: "0" }}>
+            <div style={{ backgroundColor: "#ffff", margin: "0" }}>
 
 
               <Route path="/" exact component={Home} />
