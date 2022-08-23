@@ -6,7 +6,7 @@ export default class Home
     return (
       <div>
 
-        <h1>e-shop-frontend</h1>
+       
 
       </div>
     )
