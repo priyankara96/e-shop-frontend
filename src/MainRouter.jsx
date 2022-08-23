@@ -21,10 +21,10 @@ export default class MainRouter extends Component {
     return (
           <BrowserRouter>
             <div style={{ backgroundColor: "#ffff", margin: "0" }}>
-
+            <SidebarDemo />
 
               <Route path="/" exact component={Home} />
-
+              <NavBar />
               {/* Chanduni */}
           <Route path="/order/create" exact component={CreateOrders} />
           <Route path="/order/update/:id" exact component={EditOrder} />
