@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import swal from 'sweetalert';
+import "./myStyles.css";
 
 
 export default class EditOrder extends Component {
@@ -74,7 +75,7 @@ export default class EditOrder extends Component {
     const id = this.props.match.params.id;
 
 
-    axios.get(`${id}`).then((res) => {
+    axios.get(`http://localhost:4000/order/${id}`).then((res) => {
 
       if (res.data.success) {
         this.setState({
@@ -96,30 +97,6 @@ export default class EditOrder extends Component {
   }
  
 
-  demo =() => { 
-
-    //setState
-    this.setState ({
-      name :"Chanduni Nethmini"
-    })
-  
-    this.setState ({
-      postalNo:"259"
-    })
-  
-    this.setState ({
-      street:"Lake road"
-    }) 
-  
-    this.setState ({
-      town:"Colombo2"
-    })
-    this.setState({
-      contactNo:"0710000000"
-    }) 
-  
-  }
-
   render() {
     return (
       <div>
@@ -138,7 +115,7 @@ export default class EditOrder extends Component {
           
             {/* <div className="cardedit" style={{ width: "100%" }}> */}
             <div className = "cardmy">
-            <div className="card" style={{width:"100%"}}>
+            <div className="card card1" style={{width:"100%"}}>
               <div className="card-body">
                 <div className="col-md-8 mt-4 mx-auto">
                   <h1 className="h3 mb-3 font-weight-normal adminletter text-center">Order Detail Edit Form </h1>
@@ -218,12 +195,10 @@ export default class EditOrder extends Component {
                     </div>
 
                     <br />
-                    <br />
+                   
                     <div className="text-center">
-                      
-                    <button type="button" class="btn btn-outline-dark btn-sm" onClick={this.demo} > Demo </button>
-                      <br/>
-                      <button className="btn btn-primary" type="submit" style={{ marginTop: '15px' }} onClick={this.onSubmit}>
+                    
+                      <button className="btn btn-success" type="submit" style={{ marginTop: '10px' }} onClick={this.onSubmit}>
                         <i className="far fa-check-square"></i>
                         &nbsp; Update
                       </button>
