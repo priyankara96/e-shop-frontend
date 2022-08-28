@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import swal from "sweetalert";
+import insert from "../../images/insert.gif";
+import "./myStyles.css";
 
 export default class CreateOrders extends Component {
   //intialization
@@ -20,13 +22,13 @@ export default class CreateOrders extends Component {
   }
 
   componentDidMount() {
-    // const cart = localStorage.getItem("react-use-cart");
-    // const cartdata = JSON.parse(cart);
-    // console.log(cartdata.cartTotal);
+    const cart = localStorage.getItem("react-use-cart");
+    const cartdata = JSON.parse(cart);
+    console.log(cartdata.cartTotal);
 
-    // this.setState({
-    //   cartTotal: cartdata.cartTotal,
-    // });
+    this.setState({
+      cartTotal: cartdata.cartTotal,
+    });
   }
 
   handleInputChange = (e) => {
@@ -49,7 +51,7 @@ export default class CreateOrders extends Component {
       contactNo,
       orderDate,
       status,
-      // cartTotal,
+      cartTotal,
     } = this.state;
 
     const data = {
@@ -60,7 +62,7 @@ export default class CreateOrders extends Component {
       contactNo: contactNo,
       orderDate: orderDate,
       status: status,
-      // cartTotal: cartTotal,
+      cartTotal: cartTotal,
     };
     //window.location='/payhome'
     // console.log(data)
@@ -82,11 +84,11 @@ export default class CreateOrders extends Component {
         "error"
       );
     } else if (name.length < 2) {
-      swal("User name invaide", "length should be greater than 2", "error");
+      swal("User name invalid", "length should be greater than 2", "error");
     } else if (!re.test(String(contactNo)) || contactNo.length != 10) {
       swal(
-        "Contact Number invaide",
-        "contact number should be valide pattern",
+        "Contact Number invalid",
+        "contact number should be valid pattern",
         "error"
       );
     } else if (town.length < 2) {
@@ -153,14 +155,15 @@ export default class CreateOrders extends Component {
   render() {
     return (
       <div>
+        <div className="alignment">
+          <h4>Please enter correct information to Place your order</h4>
+        </div>
         <div class="row">
-          <div class="col-5">
+          <div class="col-6">
             <img
-              src={
-                "https://i.pinimg.com/originals/dd/f7/62/ddf7620b1a1af96d24f1413bb336f096.gif"
-              }
+              src={insert}
               className="rounded-circle"
-              style={{ width: "130%", height: "70%" }}
+              style={{ width: "70%", height: "70%", marginLeft: "30%" }}
             />
 
             <section id="hire">
@@ -181,13 +184,13 @@ export default class CreateOrders extends Component {
             </section>
           </div>
 
-          <div class="col-5">
-            <div style={{ marginTop: "2%" }}>
-              <div className="myformstyle" style={{ width: "120%" }}>
-                <div className="card-body">
+          <div class="col-6">
+            <div style={{}}>
+              <div className="" style={{ marginTop: "%" }}>
+                <div className="card card1" style={{ width: "80%" }}>
                   <div className="col-md-8 mt-4 mx-auto">
-                    <h1 className="text-center newlet">
-                      <b>Order Detail Form</b>{" "}
+                    <h1 className="text-center">
+                      <b></b>{" "}
                     </h1>
 
                     <form
@@ -264,7 +267,7 @@ export default class CreateOrders extends Component {
                           style={{ marginBottom: "5px" }}
                           className="topic"
                         >
-                          <b>Contact No: </b>
+                          <b>Contact Number: </b>
                         </label>
                         <input
                           type="text"
@@ -315,7 +318,7 @@ export default class CreateOrders extends Component {
                       </button>
                       <br />
                       <button
-                        className="btn btn-dark"
+                        className="btn btn-primary"
                         type="submit"
                         style={{ marginTop: "15px" }}
                         onClick={this.onSubmit}
@@ -326,12 +329,12 @@ export default class CreateOrders extends Component {
 
                       <br />
                       <button
-                        className="btn btn-dark"
+                        className="btn btn-primary"
                         type="submit"
                         style={{ marginTop: "15px" }}
                       >
                         <a
-                          href="/payHome"
+                          href="/"
                           style={{ textDecoration: "none", color: "white" }}
                         >
                           {" "}
@@ -343,7 +346,6 @@ export default class CreateOrders extends Component {
                   </div>
                 </div>
               </div>
-              {this.state.name}
             </div>
           </div>
         </div>
