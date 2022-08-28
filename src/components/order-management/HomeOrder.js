@@ -118,7 +118,7 @@ class HomeOrder extends Component {
                   <td>{posts.contactNo}</td>
                   <td>{posts.orderDate}</td>
                   <td>{posts.status}</td>
-                  {/* <td>{posts.cartTotal}</td> */}
+                  <td>{posts.cartTotal}</td>
 
                   <td>
                     <a
