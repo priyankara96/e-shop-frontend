@@ -16,8 +16,10 @@ import { InputText } from "primereact/inputtext";
 import { Toolbar } from "primereact/toolbar";
 import { Rating } from "primereact/rating";
 import { InputSwitch } from "primereact/inputswitch";
+import moment from "moment";
 
 import "./Delivery-Service.css";
+import { __esModule } from "@testing-library/jest-dom/dist/matchers";
 
 const DeliveryService = () => {
 	let deliverySeerviceModel = {
@@ -30,36 +32,58 @@ const DeliveryService = () => {
 	};
 
 	const [deliveryServices, setDeliveryServices] = useState(null);
+	const [deliveryService, setDeliveryService] = useState(deliverySeerviceModel);
 	const [selecteddeliveryServices, setSelecteddeliveryServices] = useState(null);
 	const [filters, setFilters] = useState(null);
 	const [spinner, showSpinner] = useState(false);
 	const [globalFilter, setGlobalFilter] = useState(null);
+	const [deleveryServiceDialog, setdeleveryServiceDialog] = useState(false);
+	const [submitted, setSubmitted] = useState(false);
+	const [isValidEmail, setIsValidEmail] = useState(true);
 
 	const toast = useRef(null);
 	const dt = useRef(null);
 
 	useEffect(() => {
-		getDeliveryServices(filters);
+		getDeliveryServices();
 	}, []);
 
 	const getDeliveryServices = () => {
 		showSpinner(true);
-		DeliveryServiceApiService.getDeliveryServiceDetails()
-			.then((response) => {
-				console.log(response);
-				setDeliveryServices(response.data);
-				showSpinner(false);
-			})
-			.catch((error) => {
-				showSpinner(false);
-			});
+		setTimeout(() => {
+			DeliveryServiceApiService.getDeliveryServiceDetails()
+				.then((response) => {
+					setDeliveryServices(response.data);
+					showSpinner(false);
+				})
+				.catch((error) => {
+					showSpinner(false);
+				});
+		}, 3000);
+	};
+
+	const onInputChange = (event, name) => {
+		const value = (event.target && event.target.value) || "";
+
+		if (name === "email") {
+			validateEmail(value);
+		}
+
+		let _deliveryService = { ...deliveryService };
+
+		if (value === "") {
+			setSubmitted(false);
+		} else {
+			_deliveryService[`${name}`] = value;
+
+			setDeliveryService(_deliveryService);
+		}
 	};
 
 	const leftToolbarTemplate = () => {
 		return (
 			<React.Fragment>
-				<Button label="New" icon="pi pi-plus" className="p-button-success mr-2" onClick={openNew} />
-				<Button label="Delete" icon="pi pi-trash" className="p-button-danger" />
+				<Button label="New" icon="pi pi-plus" className="p-button-success mr-2" onClick={openDeliveryServiceDialog} />
 			</React.Fragment>
 		);
 	};
@@ -67,10 +91,91 @@ const DeliveryService = () => {
 	const rightToolbarTemplate = () => {
 		return (
 			<React.Fragment>
-				<FileUpload mode="basic" name="demo[]" auto accept=".csv" chooseLabel="Import" className="mr-2 inline-block" />
-				<Button label="Export" icon="pi pi-upload" className="p-button-help" />
+				<Button label="Genarate Report" icon="pi pi-upload" className="p-button-help" />
 			</React.Fragment>
 		);
+	};
+
+	const validateEmail = (email) => {
+		const emailFromatConfigurations =
+			/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+		if (!email || emailFromatConfigurations.test(email) === false) {
+			console.log("dev");
+			setIsValidEmail(false);
+		} else {
+			setIsValidEmail(true);
+		}
+	};
+
+	const openDeliveryServiceDialog = () => {
+		setDeliveryService({ ...deliveryService });
+		setdeleveryServiceDialog(true);
+	};
+
+	const handleDeliversyServiceSave = (rowData) => {
+		let model = rowData;
+		model.id = rowData._id;
+
+		setDeliveryService({ ...model });
+		setdeleveryServiceDialog(true);
+	};
+
+	const hideDialog = () => {
+		setSubmitted(false);
+		setdeleveryServiceDialog(false);
+	};
+
+	const deliveryServiceDialogFooter = (
+		<React.Fragment>
+			<Button label="Cancel" icon="pi pi-times" className="p-button-text" onClick={hideDialog} />
+			<Button
+				label="Save"
+				icon="pi pi-check"
+				className="p-button-text"
+				onClick={() => saveDeliveryService(deliveryService)}
+			/>
+		</React.Fragment>
+	);
+
+	const saveDeliveryService = () => {
+		setSubmitted(true);
+
+		let _deliveryService = { ...deliveryService };
+
+		const deleiveryServiceDTO = {
+			id: _deliveryService.id,
+			name: _deliveryService.name,
+			email: _deliveryService.email,
+			telephoneNumber: _deliveryService.telephoneNumber,
+			address: _deliveryService.address,
+			description: _deliveryService.description,
+		};
+
+		if (submitted === true) {
+			DeliveryServiceApiService.saveDeliveryService(deleiveryServiceDTO)
+				.then((response) => {
+					if (response.data.isSuccess) {
+						toast.current.show({ severity: "info", summary: "Confirmed", detail: response.data.message, life: 3000 });
+						setdeleveryServiceDialog(false);
+						setDeliveryService(deliverySeerviceModel);
+
+						getDeliveryServices();
+					} else {
+						toast.current.show({ severity: "error", summary: "Rejected", detail: response.data.message, life: 3000 });
+					}
+				})
+				.catch((error) => {
+					toast.current.show({
+						severity: "error",
+						summary: "Rejected",
+						detail: "Error has been Occred please try again",
+						life: 3000,
+					});
+				})
+				.finally(() => {
+					setSubmitted(false);
+				});
+		}
 	};
 
 	const header = (
@@ -90,14 +195,24 @@ const DeliveryService = () => {
 	const actionBodyTemplate = (rowData) => {
 		return (
 			<React.Fragment>
-				<Button icon="pi pi-pencil" className="p-button-rounded p-button-success mr-2" />
+				<Button
+					icon="pi pi-pencil"
+					className="p-button-rounded p-button-success mr-2"
+					onClick={() => handleDeliversyServiceSave(rowData)}
+				/>
 				<Button icon="pi pi-trash" className="p-button-rounded p-button-warning mr-2" />
 				<InputSwitch checked={true} />
 			</React.Fragment>
 		);
 	};
 
-	const openNew = () => {};
+	const createdOnsBodyTemplate = (rowData) => {
+		return moment(rowData.createdOn).format("MMMM Do YYYY");
+	};
+
+	const updatedOnBodyTemplate = (rowData) => {
+		return moment(rowData.updatedOn).format("MMMM Do YYYY");
+	};
 
 	return (
 		<div>
@@ -125,8 +240,8 @@ const DeliveryService = () => {
 						<Column field="name" header="Name" sortable style={{ minWidth: "8rem" }}></Column>
 						<Column field="email" header="Email" sortable style={{ minWidth: "10rem" }}></Column>
 						<Column field="telephoneNumber" header="Telphone Number"></Column>
-						<Column field="createdOn" header="Created Date"></Column>
-						<Column field="updatedOn" header="Updated Date"></Column>
+						<Column field="createdOn" body={createdOnsBodyTemplate} header="Created Date"></Column>
+						<Column field="updatedOn" body={updatedOnBodyTemplate} header="Updated Date"></Column>
 
 						<Column
 							field="isActive"
@@ -142,6 +257,80 @@ const DeliveryService = () => {
 				<Backdrop sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }} open={spinner}>
 					<CircularProgress color="inherit" />
 				</Backdrop>
+
+				<Dialog
+					visible={deleveryServiceDialog}
+					style={{ width: "550px" }}
+					header="Delivery Service Details"
+					modal
+					className="p-fluid"
+					footer={deliveryServiceDialogFooter}
+					onHide={hideDialog}
+				>
+					<div className="field">
+						<label htmlFor="name">Full Name </label>
+						<InputText
+							id="name"
+							value={deliveryService.name}
+							onChange={(event) => onInputChange(event, "name")}
+							required
+							autoFocus
+							className={classNames({ "p-invalid": submitted && !deliveryService.name })}
+						/>
+						{submitted && !deliveryService.name && <small className="p-error">Full Name is required.</small>}
+					</div>
+					<div className="field">
+						<label htmlFor="email">Email </label>
+						<InputText
+							id="email"
+							value={deliveryService.email}
+							onChange={(event) => onInputChange(event, "email")}
+							required
+							className={classNames({ "p-invalid": submitted && !deliveryService.email })}
+						/>
+						{submitted && !deliveryService.email && <small className="p-error">Email is required.</small>}
+						{!deliveryService.email && !isValidEmail && (
+							<small className="p-error">Invalid email address. E.g. example@email.com</small>
+						)}
+					</div>
+					<div className="field">
+						<label htmlFor="telephoneNumber">Telephone Number </label>
+						<InputText
+							id="telephoneNumber"
+							value={deliveryService.telephoneNumber}
+							onChange={(event) => onInputChange(event, "telephoneNumber")}
+							required
+							className={classNames({ "p-invalid": submitted && !deliveryService.telephoneNumber })}
+						/>
+						{submitted && !deliveryService.telephoneNumber && (
+							<small className="p-error">Telephone Number is required.</small>
+						)}
+					</div>
+
+					<div className="field">
+						<label htmlFor="address">Address </label>
+						<InputText
+							id="address"
+							value={deliveryService.address}
+							onChange={(event) => onInputChange(event, "address")}
+							required
+							className={classNames({ "p-invalid": submitted && !deliveryService.address })}
+						/>
+						{submitted && !deliveryService.address && <small className="p-error">Address is required.</small>}
+					</div>
+					<div className="field">
+						<label htmlFor="description">Description</label>
+						<InputTextarea
+							id="description"
+							value={deliveryService.description}
+							onChange={(event) => onInputChange(event, "description")}
+							required
+							rows={3}
+							cols={20}
+						/>
+						{submitted && !deliveryService.description && <small className="p-error">Description is required.</small>}
+					</div>
+				</Dialog>
 			</div>
 		</div>
 	);
