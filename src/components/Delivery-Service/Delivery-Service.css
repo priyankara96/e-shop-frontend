@@ -1,0 +1,63 @@
+.datatable-details .table-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+@media screen and (max-width: 960px) {
+	.datatable-details .table-header {
+		align-items: flex-start;
+	}
+}
+.datatable-details .product-image {
+	width: 100px;
+	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+.datatable-details .p-dialog .product-image {
+	width: 150px;
+	margin: 0 auto 2rem auto;
+	display: block;
+}
+.datatable-details .confirmation-content {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+@media screen and (max-width: 960px) {
+	.datatable-details .p-toolbar {
+		flex-wrap: wrap;
+	}
+	.datatable-details .p-toolbar .p-button {
+		margin-bottom: 0.25rem;
+	}
+	.datatable-details .table-header {
+		flex-direction: column;
+	}
+	.datatable-details .table-header .p-input-icon-left,
+	.datatable-details .table-header input {
+		width: 100%;
+	}
+}
+
+.delivery-service-status-badge {
+	border-radius: 2px;
+	padding: 0.25em 0.5rem;
+	text-transform: uppercase;
+	font-weight: 700;
+	font-size: 12px;
+	letter-spacing: 0.3px;
+}
+
+.delivery-service-status-badge-true {
+	background: #c8e6c9;
+	color: #256029;
+}
+
+.delivery-service-status-badge-false {
+	background: #ffcdd2;
+	color: #c63737;
+}
+
+.delivery-service-status-badge-lowstock {
+	background: #feedaf;
+	color: #8a5340;
+}
