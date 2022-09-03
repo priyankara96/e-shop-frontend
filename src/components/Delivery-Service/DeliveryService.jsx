@@ -19,8 +19,6 @@ import { InputSwitch } from "primereact/inputswitch";
 import moment from "moment";
 
 import "./Delivery-Service.css";
-import { __esModule } from "@testing-library/jest-dom/dist/matchers";
-
 const DeliveryService = () => {
 	let deliverySeerviceModel = {
 		id: null,
@@ -66,18 +64,15 @@ const DeliveryService = () => {
 		const value = (event.target && event.target.value) || "";
 
 		if (name === "email") {
+			//console.log(value);
 			validateEmail(value);
 		}
 
 		let _deliveryService = { ...deliveryService };
 
-		if (value === "") {
-			setSubmitted(false);
-		} else {
-			_deliveryService[`${name}`] = value;
+		_deliveryService[`${name}`] = value;
 
-			setDeliveryService(_deliveryService);
-		}
+		setDeliveryService(_deliveryService);
 	};
 
 	const leftToolbarTemplate = () => {
@@ -289,8 +284,8 @@ const DeliveryService = () => {
 							className={classNames({ "p-invalid": submitted && !deliveryService.email })}
 						/>
 						{submitted && !deliveryService.email && <small className="p-error">Email is required.</small>}
-						{!deliveryService.email && !isValidEmail && (
-							<small className="p-error">Invalid email address. E.g. example@email.com</small>
+						{!submitted && !isValidEmail && (
+							<small className="p-error">Invalid email address. E.g. example@gmail.com</small>
 						)}
 					</div>
 					<div className="field">
