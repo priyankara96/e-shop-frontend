@@ -24,3 +24,13 @@ h2 {
 		max-width: 1500px;
 	}
 }
+
+.txtInput {
+	font-size: 16px;
+	height: auto;
+	padding: 15px;
+	margin-left: 400px;
+	justify-content: center;
+	width: 50%;
+	margin-bottom: 30px;
+}
