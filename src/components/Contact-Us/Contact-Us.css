@@ -34,3 +34,8 @@ h2 {
 	width: 50%;
 	margin-bottom: 30px;
 }
+
+.lbl {
+	display: block;
+	margin-bottom: 8px;
+}
