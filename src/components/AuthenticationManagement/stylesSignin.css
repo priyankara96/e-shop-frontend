@@ -1,0 +1,49 @@
+.form-signin {
+    background: #e0e3e4;
+    margin: 5%;
+    padding: 50px;
+    border-radius: 20px;
+    width: 40%;
+}
+
+.form-signin h1 {
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: 40px;
+    color: rgb(0, 0, 0);
+}
+
+.form-signin .ant-btn-primary {
+    border-radius: 5px;
+    background: #6f7e8b;
+    outline: none;
+    border: none;
+}
+
+.main-container-signin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-signin .ant-input-affix-wrapper {
+    width: 80%;
+    border-radius: 20px;
+}
+
+.form-signin .ant-form {
+    width: 50%;
+}
+
+.form-signin .ant-form {
+    
+     margin-top: -200px;
+     margin-left: 50%;
+ }
+
+ .form-signin .ant-checkbox {
+     margin-left: 2px;
+ }
+
+
