@@ -19,6 +19,9 @@
     background: #6f7e8b;
     outline: none;
     border: none;
+    display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .main-container-signin {
@@ -45,5 +48,4 @@
  .form-signin .ant-checkbox {
      margin-left: 2px;
  }
-
 

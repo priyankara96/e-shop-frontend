@@ -1,9 +1,12 @@
 import React from "react";
 import { Form, Input, Button, Checkbox, message } from "antd";
+import { Row, Col } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import "antd/dist/antd.css";
 import "./stylesSignin.css";
-import logo from "../../images/logo.jpg";
+import logo from "../../images/logo2.png";
+import background from "../../images/background2.jpeg";
+//background2.jpeg
 
 import useRequest from "../../services/RequestContext";
 import useUser from "../../services/UserContext";
@@ -34,17 +37,19 @@ function Signin() {
     }
   };
 
+
+  
   const [setValue] = React.useState(1);
 
   return (
     <>
-    <div>
+    <div className style={{ backgroundImage: `url(${background})`, backgroundSize: 'cover' }}>
       <div className="main-container-signin">
-        <div className="form-signin">
-          <h1>Login</h1>
+        <div style={{marginTop:"60px"}}>
+          <h1 className="text-center">Login</h1>
 
-          <div className="form-container">
-            <img width={200} style={{marginLeft:"0px"}} src={logo} alt="Logo" />
+          <div className="text-center">
+            
 
             <Form
               name="normal_login"
@@ -54,7 +59,15 @@ function Signin() {
               }}
               onFinish={onFinish}
             >
-              <Form.Item
+
+          <Row>
+          <Col span={12}>
+          <div style={{marginTop:"30px"}}>
+          <img width={150} src={logo} alt="logo" className="logo" />
+          </div>
+          </Col>
+          <Col span={12}>
+          <Form.Item
                 name="email"
                 rules={[
                   {
@@ -94,14 +107,17 @@ function Signin() {
               </Form.Item>
 
               <Form.Item>
-                <Button
-                  type="primary"
+                <Button type="primary" block
                   htmlType="submit"
                   className="login-form-button"
-                >
+                  >
                   Login
                 </Button>
               </Form.Item>
+          </Col>
+        </Row>
+        <br/><br/><br/><br/>
+              
             </Form>
           </div>
         </div>
