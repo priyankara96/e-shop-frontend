@@ -37,7 +37,7 @@ export class NavBar extends Component {
             </div>
             <form class="form-inline my-2 my-lg-0">
             <a class="nav-link" href="/login">
-              <button type="button" className="btn btn-light"  style={{ textDecoration: 'none', color: 'Info' }}><AiOutlineLogin />&nbsp; Sign in</button>
+              <AiOutlineLogin />&nbsp; Sign in &nbsp;
             </a>
             </form>
           </div>
