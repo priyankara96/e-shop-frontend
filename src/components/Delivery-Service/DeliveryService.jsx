@@ -17,8 +17,9 @@ import { Toolbar } from "primereact/toolbar";
 import { Rating } from "primereact/rating";
 import { InputSwitch } from "primereact/inputswitch";
 import moment from "moment";
+import "./Delivery-Service.scss";
+import { AppMenu } from "../AdminMenu/AdminMenu";
 
-import "./Delivery-Service.css";
 const DeliveryService = () => {
 	let deliverySeerviceModel = {
 		id: null,
@@ -28,6 +29,132 @@ const DeliveryService = () => {
 		address: "",
 		description: "",
 	};
+
+	const menu = [
+		{
+			label: "Home",
+			items: [
+				{
+					label: "Dashboard",
+					icon: "pi pi-fw pi-home",
+					to: "/",
+				},
+			],
+		},
+		{
+			label: "UI Components",
+			icon: "pi pi-fw pi-sitemap",
+			items: [
+				{ label: "Form Layout", icon: "pi pi-fw pi-id-card", to: "/formlayout" },
+				{ label: "Input", icon: "pi pi-fw pi-check-square", to: "/input" },
+				{ label: "Float Label", icon: "pi pi-fw pi-bookmark", to: "/floatlabel" },
+				{ label: "Invalid State", icon: "pi pi-fw pi-exclamation-circle", to: "invalidstate" },
+				{ label: "Button", icon: "pi pi-fw pi-mobile", to: "/button" },
+				{ label: "Table", icon: "pi pi-fw pi-table", to: "/table" },
+				{ label: "List", icon: "pi pi-fw pi-list", to: "/list" },
+				{ label: "Tree", icon: "pi pi-fw pi-share-alt", to: "/tree" },
+				{ label: "Panel", icon: "pi pi-fw pi-tablet", to: "/panel" },
+				{ label: "Overlay", icon: "pi pi-fw pi-clone", to: "/overlay" },
+				{ label: "Media", icon: "pi pi-fw pi-image", to: "/media" },
+				{ label: "Menu", icon: "pi pi-fw pi-bars", to: "/menu" },
+				{ label: "Message", icon: "pi pi-fw pi-comment", to: "/messages" },
+				{ label: "File", icon: "pi pi-fw pi-file", to: "/file" },
+				{ label: "Chart", icon: "pi pi-fw pi-chart-bar", to: "/chart" },
+				{ label: "Misc", icon: "pi pi-fw pi-circle-off", to: "/misc" },
+			],
+		},
+		{
+			label: "UI Blocks",
+			items: [
+				{ label: "Free Blocks", icon: "pi pi-fw pi-eye", to: "/blocks", badge: "NEW" },
+				{ label: "All Blocks", icon: "pi pi-fw pi-globe", url: "https://www.primefaces.org/primeblocks-react" },
+			],
+		},
+		{
+			label: "Icons",
+			items: [{ label: "PrimeIcons", icon: "pi pi-fw pi-prime", to: "/icons" }],
+		},
+		{
+			label: "Pages",
+			icon: "pi pi-fw pi-clone",
+			items: [
+				{ label: "Crud", icon: "pi pi-fw pi-user-edit", to: "/crud" },
+				{ label: "Timeline", icon: "pi pi-fw pi-calendar", to: "/timeline" },
+				{ label: "Empty", icon: "pi pi-fw pi-circle-off", to: "/empty" },
+			],
+		},
+		{
+			label: "Menu Hierarchy",
+			icon: "pi pi-fw pi-search",
+			items: [
+				{
+					label: "Submenu 1",
+					icon: "pi pi-fw pi-bookmark",
+					items: [
+						{
+							label: "Submenu 1.1",
+							icon: "pi pi-fw pi-bookmark",
+							items: [
+								{ label: "Submenu 1.1.1", icon: "pi pi-fw pi-bookmark" },
+								{ label: "Submenu 1.1.2", icon: "pi pi-fw pi-bookmark" },
+								{ label: "Submenu 1.1.3", icon: "pi pi-fw pi-bookmark" },
+							],
+						},
+						{
+							label: "Submenu 1.2",
+							icon: "pi pi-fw pi-bookmark",
+							items: [
+								{ label: "Submenu 1.2.1", icon: "pi pi-fw pi-bookmark" },
+								{ label: "Submenu 1.2.2", icon: "pi pi-fw pi-bookmark" },
+							],
+						},
+					],
+				},
+				{
+					label: "Submenu 2",
+					icon: "pi pi-fw pi-bookmark",
+					items: [
+						{
+							label: "Submenu 2.1",
+							icon: "pi pi-fw pi-bookmark",
+							items: [
+								{ label: "Submenu 2.1.1", icon: "pi pi-fw pi-bookmark" },
+								{ label: "Submenu 2.1.2", icon: "pi pi-fw pi-bookmark" },
+								{ label: "Submenu 2.1.3", icon: "pi pi-fw pi-bookmark" },
+							],
+						},
+						{
+							label: "Submenu 2.2",
+							icon: "pi pi-fw pi-bookmark",
+							items: [
+								{ label: "Submenu 2.2.1", icon: "pi pi-fw pi-bookmark" },
+								{ label: "Submenu 2.2.2", icon: "pi pi-fw pi-bookmark" },
+							],
+						},
+					],
+				},
+			],
+		},
+		{
+			label: "Get Started",
+			items: [
+				{
+					label: "Documentation",
+					icon: "pi pi-fw pi-question",
+					command: () => {
+						window.location = "#/documentation";
+					},
+				},
+				{
+					label: "View Source",
+					icon: "pi pi-fw pi-search",
+					command: () => {
+						window.location = "https://github.com/primefaces/sakai-react";
+					},
+				},
+			],
+		},
+	];
 
 	const [deliveryServices, setDeliveryServices] = useState(null);
 	const [deliveryService, setDeliveryService] = useState(deliverySeerviceModel);
@@ -210,122 +337,127 @@ const DeliveryService = () => {
 	};
 
 	return (
-		<div>
-			<div className="datatable-details" style={{ width: "125rem", paddingTop: "30px", paddingLeft: "350px" }}>
-				<Toast ref={toast} />
-				<div className="card">
-					<Toolbar className="mb-4" left={leftToolbarTemplate} right={rightToolbarTemplate}></Toolbar>
+		<div className="layout-wrapper layout-static layout-theme-light">
+			<div className="layout-sidebar" onClick={true}>
+				<AppMenu model={menu} onMenuItemClick={true} />
+			</div>
+			<div className="layout-main-container">
+				<div>
+					<Toast ref={toast} />
+					<div className="card">
+						<Toolbar className="mb-4" left={leftToolbarTemplate} right={rightToolbarTemplate}></Toolbar>
 
-					<DataTable
-						ref={dt}
-						value={deliveryServices}
-						selection={selecteddeliveryServices}
-						onSelectionChange={(e) => setSelecteddeliveryServices(e.value)}
-						dataKey="_id"
-						paginator
-						rows={10}
-						rowsPerPageOptions={[5, 10, 25]}
-						paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
-						currentPageReportTemplate="Showing {first} to {last} of {totalRecords} Delivery Services"
-						globalFilter={globalFilter}
-						header={header}
-						responsiveLayout="scroll"
+						<DataTable
+							ref={dt}
+							value={deliveryServices}
+							selection={selecteddeliveryServices}
+							onSelectionChange={(e) => setSelecteddeliveryServices(e.value)}
+							dataKey="_id"
+							paginator
+							rows={10}
+							rowsPerPageOptions={[5, 10, 25]}
+							paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
+							currentPageReportTemplate="Showing {first} to {last} of {totalRecords} Delivery Services"
+							globalFilter={globalFilter}
+							header={header}
+							responsiveLayout="scroll"
+						>
+							<Column selectionMode="multiple" headerStyle={{ width: "3rem" }} exportable={false}></Column>
+							<Column field="name" header="Name" sortable style={{ minWidth: "8rem" }}></Column>
+							<Column field="email" header="Email" sortable style={{ minWidth: "10rem" }}></Column>
+							<Column field="telephoneNumber" header="Telphone Number"></Column>
+							<Column field="createdOn" body={createdOnsBodyTemplate} header="Created Date"></Column>
+							<Column field="updatedOn" body={updatedOnBodyTemplate} header="Updated Date"></Column>
+
+							<Column
+								field="isActive"
+								header="Status"
+								body={statusBodyTemplate}
+								sortable
+								style={{ minWidth: "12rem" }}
+							></Column>
+							<Column body={actionBodyTemplate} exportable={false} style={{ minWidth: "8rem" }}></Column>
+						</DataTable>
+					</div>
+
+					<Backdrop sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }} open={spinner}>
+						<CircularProgress color="inherit" />
+					</Backdrop>
+
+					<Dialog
+						visible={deleveryServiceDialog}
+						style={{ width: "550px" }}
+						header="Delivery Service Details"
+						modal
+						className="p-fluid"
+						footer={deliveryServiceDialogFooter}
+						onHide={hideDialog}
 					>
-						<Column selectionMode="multiple" headerStyle={{ width: "3rem" }} exportable={false}></Column>
-						<Column field="name" header="Name" sortable style={{ minWidth: "8rem" }}></Column>
-						<Column field="email" header="Email" sortable style={{ minWidth: "10rem" }}></Column>
-						<Column field="telephoneNumber" header="Telphone Number"></Column>
-						<Column field="createdOn" body={createdOnsBodyTemplate} header="Created Date"></Column>
-						<Column field="updatedOn" body={updatedOnBodyTemplate} header="Updated Date"></Column>
+						<div className="field">
+							<label htmlFor="name">Full Name </label>
+							<InputText
+								id="name"
+								value={deliveryService.name}
+								onChange={(event) => onInputChange(event, "name")}
+								required
+								autoFocus
+								className={classNames({ "p-invalid": submitted && !deliveryService.name })}
+							/>
+							{submitted && !deliveryService.name && <small className="p-error">Full Name is required.</small>}
+						</div>
+						<div className="field">
+							<label htmlFor="email">Email </label>
+							<InputText
+								id="email"
+								value={deliveryService.email}
+								onChange={(event) => onInputChange(event, "email")}
+								required
+								className={classNames({ "p-invalid": submitted && !deliveryService.email })}
+							/>
+							{submitted && !deliveryService.email && <small className="p-error">Email is required.</small>}
+							{!submitted && !isValidEmail && (
+								<small className="p-error">Invalid email address. E.g. example@gmail.com</small>
+							)}
+						</div>
+						<div className="field">
+							<label htmlFor="telephoneNumber">Telephone Number </label>
+							<InputText
+								id="telephoneNumber"
+								value={deliveryService.telephoneNumber}
+								onChange={(event) => onInputChange(event, "telephoneNumber")}
+								required
+								className={classNames({ "p-invalid": submitted && !deliveryService.telephoneNumber })}
+							/>
+							{submitted && !deliveryService.telephoneNumber && (
+								<small className="p-error">Telephone Number is required.</small>
+							)}
+						</div>
 
-						<Column
-							field="isActive"
-							header="Status"
-							body={statusBodyTemplate}
-							sortable
-							style={{ minWidth: "12rem" }}
-						></Column>
-						<Column body={actionBodyTemplate} exportable={false} style={{ minWidth: "8rem" }}></Column>
-					</DataTable>
+						<div className="field">
+							<label htmlFor="address">Address </label>
+							<InputText
+								id="address"
+								value={deliveryService.address}
+								onChange={(event) => onInputChange(event, "address")}
+								required
+								className={classNames({ "p-invalid": submitted && !deliveryService.address })}
+							/>
+							{submitted && !deliveryService.address && <small className="p-error">Address is required.</small>}
+						</div>
+						<div className="field">
+							<label htmlFor="description">Description</label>
+							<InputTextarea
+								id="description"
+								value={deliveryService.description}
+								onChange={(event) => onInputChange(event, "description")}
+								required
+								rows={3}
+								cols={20}
+							/>
+							{submitted && !deliveryService.description && <small className="p-error">Description is required.</small>}
+						</div>
+					</Dialog>
 				</div>
-
-				<Backdrop sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }} open={spinner}>
-					<CircularProgress color="inherit" />
-				</Backdrop>
-
-				<Dialog
-					visible={deleveryServiceDialog}
-					style={{ width: "550px" }}
-					header="Delivery Service Details"
-					modal
-					className="p-fluid"
-					footer={deliveryServiceDialogFooter}
-					onHide={hideDialog}
-				>
-					<div className="field">
-						<label htmlFor="name">Full Name </label>
-						<InputText
-							id="name"
-							value={deliveryService.name}
-							onChange={(event) => onInputChange(event, "name")}
-							required
-							autoFocus
-							className={classNames({ "p-invalid": submitted && !deliveryService.name })}
-						/>
-						{submitted && !deliveryService.name && <small className="p-error">Full Name is required.</small>}
-					</div>
-					<div className="field">
-						<label htmlFor="email">Email </label>
-						<InputText
-							id="email"
-							value={deliveryService.email}
-							onChange={(event) => onInputChange(event, "email")}
-							required
-							className={classNames({ "p-invalid": submitted && !deliveryService.email })}
-						/>
-						{submitted && !deliveryService.email && <small className="p-error">Email is required.</small>}
-						{!submitted && !isValidEmail && (
-							<small className="p-error">Invalid email address. E.g. example@gmail.com</small>
-						)}
-					</div>
-					<div className="field">
-						<label htmlFor="telephoneNumber">Telephone Number </label>
-						<InputText
-							id="telephoneNumber"
-							value={deliveryService.telephoneNumber}
-							onChange={(event) => onInputChange(event, "telephoneNumber")}
-							required
-							className={classNames({ "p-invalid": submitted && !deliveryService.telephoneNumber })}
-						/>
-						{submitted && !deliveryService.telephoneNumber && (
-							<small className="p-error">Telephone Number is required.</small>
-						)}
-					</div>
-
-					<div className="field">
-						<label htmlFor="address">Address </label>
-						<InputText
-							id="address"
-							value={deliveryService.address}
-							onChange={(event) => onInputChange(event, "address")}
-							required
-							className={classNames({ "p-invalid": submitted && !deliveryService.address })}
-						/>
-						{submitted && !deliveryService.address && <small className="p-error">Address is required.</small>}
-					</div>
-					<div className="field">
-						<label htmlFor="description">Description</label>
-						<InputTextarea
-							id="description"
-							value={deliveryService.description}
-							onChange={(event) => onInputChange(event, "description")}
-							required
-							rows={3}
-							cols={20}
-						/>
-						{submitted && !deliveryService.description && <small className="p-error">Description is required.</small>}
-					</div>
-				</Dialog>
 			</div>
 		</div>
 	);
