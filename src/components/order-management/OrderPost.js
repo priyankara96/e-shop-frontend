@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-
 class OrderPost extends Component{
   constructor(props){
     super(props);
 
     this.state={
-      post:{}
+      post:[]
     };
   }
 
@@ -58,7 +57,7 @@ class OrderPost extends Component{
     </div>
     <div class="col-6">
     <div className="imageprofile">
-          <img src="https://i.pinimg.com/originals/91/7c/06/917c06856035dd3d396b62916d082472.gif "alt="..." className="rounded-circle" style={{marginLeft:"20%"}}/>
+          <img src=""alt="" className="rounded-circle" style={{marginLeft:"20%"}}/>
           </div>
     </div>
     
