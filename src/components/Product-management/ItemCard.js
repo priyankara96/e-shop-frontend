@@ -12,7 +12,7 @@ const Itemcard = (props) => {
                     <h5 className="card-title">{props.title}</h5>
                     <h5 className="card-title">Rs.{props.price}</h5>
                     <p className="card-text">{props.desc}</p>
-                    <button className="btn btn-success" onClick={() => addItem(props.item)}><a href="/cart" style={{ textDecoration: 'none', color: 'white' }}>
+                    <button className="btn btn-primary" onClick={() => addItem(props.item)}><a href="/cart" style={{ textDecoration: 'none', color: 'white' }}>
                         Add to Cart </a></button>
 
                 </div>
