@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Sidebar } from "primereact/sidebar";
 import { Button } from "primereact/button";
 import "./Nav.css";
+import logo from "../../images/logo.jpg";
 
 import "primereact/resources/themes/lara-light-indigo/theme.css"; //theme
 import "primereact/resources/primereact.min.css"; //core css
@@ -45,7 +46,7 @@ export class SidebarDemo extends Component {
               />
             </div>
             <div className="col-8 alignitems">
-              <h1>E-SHOP</h1>
+            <h1><img width={80} src={logo} alt="logo" className="logo" />&nbsp;E-SHOP</h1>
             </div>
           </div>
         </div>

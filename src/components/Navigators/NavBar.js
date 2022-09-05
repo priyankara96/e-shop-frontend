@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { AiOutlineLogin } from "react-icons/ai";
 
 export class NavBar extends Component {
   render() {
@@ -34,6 +35,11 @@ export class NavBar extends Component {
                 <a class="nav-link disabled">User Profile</a>
               </div>
             </div>
+            <form class="form-inline my-2 my-lg-0">
+            <a class="nav-link" href="/login">
+              <AiOutlineLogin />&nbsp; Sign in &nbsp;
+            </a>
+            </form>
           </div>
         </nav>
       </div>
