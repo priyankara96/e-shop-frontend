@@ -18,7 +18,6 @@ import { Rating } from "primereact/rating";
 import { InputSwitch } from "primereact/inputswitch";
 import moment from "moment";
 import "./Delivery-Service.scss";
-import { AppMenu } from "../AdminMenu/AdminMenu";
 
 const DeliveryService = () => {
 	let deliverySeerviceModel = {
@@ -191,7 +190,7 @@ const DeliveryService = () => {
 		const value = (event.target && event.target.value) || "";
 
 		if (name === "email") {
-			//console.log(value);
+			console.log(value);
 			validateEmail(value);
 		}
 
@@ -259,13 +258,25 @@ const DeliveryService = () => {
 		</React.Fragment>
 	);
 
+	const validateInputData = (deliveryService) => {
+		const isValid = Object.values(deliveryService).every((value) => {
+			if (value === null || value === undefined || value === "") {
+				return false;
+			} else {
+				return true;
+			}
+		});
+
+		return isValid;
+	};
+
 	const saveDeliveryService = () => {
 		setSubmitted(true);
 
 		let _deliveryService = { ...deliveryService };
 
 		const deleiveryServiceDTO = {
-			id: _deliveryService.id,
+			id: _deliveryService.id === null ? 0 : _deliveryService.id,
 			name: _deliveryService.name,
 			email: _deliveryService.email,
 			telephoneNumber: _deliveryService.telephoneNumber,
@@ -273,7 +284,9 @@ const DeliveryService = () => {
 			description: _deliveryService.description,
 		};
 
-		if (submitted === true) {
+		const validation = validateInputData(deleiveryServiceDTO);
+
+		if (validation === true) {
 			DeliveryServiceApiService.saveDeliveryService(deleiveryServiceDTO)
 				.then((response) => {
 					if (response.data.isSuccess) {
@@ -297,6 +310,13 @@ const DeliveryService = () => {
 				.finally(() => {
 					setSubmitted(false);
 				});
+		} else {
+			toast.current.show({
+				severity: "error",
+				summary: "Rejected",
+				detail: "Please fill all the fields",
+				life: 3000,
+			});
 		}
 	};
 
@@ -319,11 +339,12 @@ const DeliveryService = () => {
 			<React.Fragment>
 				<Button
 					icon="pi pi-pencil"
-					className="p-button-rounded p-button-success mr-2"
+					className=" p-button-success mr-2"
+					style={{ marginRight: ".5em" }}
 					onClick={() => handleDeliversyServiceSave(rowData)}
 				/>
-				<Button icon="pi pi-trash" className="p-button-rounded p-button-warning mr-2" />
-				<InputSwitch checked={true} />
+				<Button icon="pi pi-trash" style={{ marginRight: ".5em" }} className=" p-button-warning mr-2" />
+				<InputSwitch checked={true} style={{ marginRight: ".5em" }} />
 			</React.Fragment>
 		);
 	};
@@ -338,9 +359,6 @@ const DeliveryService = () => {
 
 	return (
 		<div className="layout-wrapper layout-static layout-theme-light">
-			<div className="layout-sidebar" onClick={true}>
-				<AppMenu model={menu} onMenuItemClick={true} />
-			</div>
 			<div className="layout-main-container">
 				<div>
 					<Toast ref={toast} />
@@ -354,7 +372,7 @@ const DeliveryService = () => {
 							onSelectionChange={(e) => setSelecteddeliveryServices(e.value)}
 							dataKey="_id"
 							paginator
-							rows={10}
+							rows={8}
 							rowsPerPageOptions={[5, 10, 25]}
 							paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
 							currentPageReportTemplate="Showing {first} to {last} of {totalRecords} Delivery Services"
@@ -362,21 +380,44 @@ const DeliveryService = () => {
 							header={header}
 							responsiveLayout="scroll"
 						>
-							<Column selectionMode="multiple" headerStyle={{ width: "3rem" }} exportable={false}></Column>
-							<Column field="name" header="Name" sortable style={{ minWidth: "8rem" }}></Column>
-							<Column field="email" header="Email" sortable style={{ minWidth: "10rem" }}></Column>
-							<Column field="telephoneNumber" header="Telphone Number"></Column>
-							<Column field="createdOn" body={createdOnsBodyTemplate} header="Created Date"></Column>
-							<Column field="updatedOn" body={updatedOnBodyTemplate} header="Updated Date"></Column>
-
 							<Column
+								selectionMode="multiple"
+								headerStyle={{ width: "3rem", fontSize: "15px" }}
+								exportable={false}
+							></Column>
+							<Column field="name" header="Name" sortable style={{ minWidth: "8rem", fontSize: "15px" }}></Column>
+							<Column field="email" header="Email" sortable style={{ minWidth: "10rem", fontSize: "15px" }}></Column>
+							<Column
+								field="telephoneNumber"
+								style={{ minWidth: "10rem", fontSize: "15px" }}
+								header="Telphone Number"
+							></Column>
+							<Column
+								field="createdOn"
+								body={createdOnsBodyTemplate}
+								style={{ minWidth: "10rem", fontSize: "15px" }}
+								header="Created Date"
+							></Column>
+							<Column
+								field="updatedOn"
+								body={updatedOnBodyTemplate}
+								style={{ minWidth: "10rem", fontSize: "15px" }}
+								header="Updated Date"
+							></Column>
+
+							{/* <Column
 								field="isActive"
 								header="Status"
 								body={statusBodyTemplate}
 								sortable
 								style={{ minWidth: "12rem" }}
+							></Column> */}
+							<Column
+								header="Actions"
+								body={actionBodyTemplate}
+								exportable={false}
+								style={{ minWidth: "8rem", fontSize: "15px" }}
 							></Column>
-							<Column body={actionBodyTemplate} exportable={false} style={{ minWidth: "8rem" }}></Column>
 						</DataTable>
 					</div>
 
@@ -415,7 +456,7 @@ const DeliveryService = () => {
 								className={classNames({ "p-invalid": submitted && !deliveryService.email })}
 							/>
 							{submitted && !deliveryService.email && <small className="p-error">Email is required.</small>}
-							{!submitted && !isValidEmail && (
+							{submitted && !isValidEmail && (
 								<small className="p-error">Invalid email address. E.g. example@gmail.com</small>
 							)}
 						</div>
