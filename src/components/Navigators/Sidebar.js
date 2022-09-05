@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Sidebar } from "primereact/sidebar";
 import { Button } from "primereact/button";
 import "./Nav.css";
-import logo from "../../images/logo.jpg";
+import logo from "../../images/logo2.png";
 
 import "primereact/resources/themes/lara-light-indigo/theme.css"; //theme
 import "primereact/resources/primereact.min.css"; //core css
@@ -36,18 +36,24 @@ export class SidebarDemo extends Component {
             onHide={() => this.setState({ visibleLeft: false })}
           >
             <h2>Home</h2>
+            <h2>Products</h2>
+            <h2>About Us</h2>
+            <h2>Contact Us</h2>
           </Sidebar>
-          <div className="row">
+          <div className="row" style={{backgroundColor:'#0b22a1'}}>
             <div className="col-3">
               <Button
-                icon="pi pi-arrow-right"
+                icon="pi pi-align-justify"
                 onClick={() => this.setState({ visibleLeft: true })}
-                className="mr-2"
+                className="mr-2" style={{backgroundColor:'#0b22a1', marginTop:'10%', marginLeft:'10%'}}
               />
             </div>
-            <div className="col-8 alignitems">
-            <h1><img width={80} src={logo} alt="logo" className="logo" />&nbsp;E-SHOP</h1>
+            <div className="col-8 alignitems" style={{backgroundColor:'#0b22a1'}}>
+            <h1 style={{color:'white'}}><img width={80} src={logo} alt="logo" className="logo" />&nbsp;E-SHOP</h1>
             </div>
+            <div style={{textAlign:'center'}}>  <h4 style={{color:'white'}}>Sri Lanka Best Online Electronic Item Store</h4>
+            </div>
+          
           </div>
         </div>
       </div>
