@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import jsPdf from "jspdf";
 import "jspdf-autotable";
+import "./myStyles.css";
 
 class OrderReport extends Component {
   constructor(props) {
@@ -50,6 +51,9 @@ class OrderReport extends Component {
     return (
       <div>
         <div className="container">
+        <br/>
+        <div style={{fontSize:'15px'}} >
+      <a href="/order/home" class="previous" style={{color:'white'}}>&laquo; Previous</a></div>
           <div className="text-center">
             <br />
             <br />
