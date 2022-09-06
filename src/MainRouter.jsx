@@ -23,6 +23,7 @@ import { CartProvider } from "react-use-cart";
 import Cart from "./components/Product-management/Cart";
 import DeliveryService from "./components/Delivery-Service/DeliveryService";
 import ContactUs from "./components/Contact-Us/Contact-Us";
+import AdminMainDashBoard from "./components/AdminMainDashboard/AdminMainDashboard";
 
 export default class MainRouter extends Component {
 	render() {
@@ -53,6 +54,7 @@ export default class MainRouter extends Component {
 						{/* Ashen */}
 						<Route path="/deliveryService" exact component={DeliveryService}></Route>
 						<Route path="/contact-us" exact component={ContactUs}></Route>
+						<Route path="/admin" exact component={AdminMainDashBoard}></Route>
 					</div>
 				</CartProvider>
 			</BrowserRouter>
