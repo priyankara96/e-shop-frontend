@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Sidebar } from "primereact/sidebar";
 import { Button } from "primereact/button";
 import "./Nav.css";
-import logo from "../../images/logo2.png";
+import logo from "../../images/logo1.png";
 
 import "primereact/resources/themes/lara-light-indigo/theme.css"; //theme
 import "primereact/resources/primereact.min.css"; //core css
