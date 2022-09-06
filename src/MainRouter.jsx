@@ -11,7 +11,6 @@ import Profile from "./components/AuthenticationManagement/Profile";
 import Registration from "./components/AuthenticationManagement/Registration";
 import AMDashboard from "./components/AuthenticationManagement/AMDashboard";
 
-
 // Chanduni
 // import { SidebarDemo } from "./components/Navigators/Sidebar";
 // import { NavBar } from "./components/Navigators/NavBar";
@@ -23,6 +22,7 @@ import { default as OrderReport } from "./components/order-management/OrderRepor
 import { CartProvider } from "react-use-cart";
 import Cart from "./components/Product-management/Cart";
 import DeliveryService from "./components/Delivery-Service/DeliveryService";
+import ContactUs from "./components/Contact-Us/Contact-Us";
 
 export default class MainRouter extends Component {
 	render() {
@@ -37,11 +37,11 @@ export default class MainRouter extends Component {
 						{/* Priyankara */}
 						<Route path="/" exact component={Home} />
 						<Route path="/AdminDashbord" exact component={AdminDashbord} />
-                    	<Route path="/login" exact component={Signin} />
-                    	<Route path="/Profile" exact component={Profile} /> 
-                    	<Route path="/Registration" exact component={Registration} /> 
-						<Route path="/AuthenticationManagementDashboard" exact component={AMDashboard} /> 
-						
+						<Route path="/login" exact component={Signin} />
+						<Route path="/Profile" exact component={Profile} />
+						<Route path="/Registration" exact component={Registration} />
+						<Route path="/AuthenticationManagementDashboard" exact component={AMDashboard} />
+
 						{/* Chanduni */}
 						<Route path="/order/create" exact component={CreateOrders} />
 						<Route path="/order/update/:id" exact component={EditOrder} />
@@ -49,7 +49,10 @@ export default class MainRouter extends Component {
 						<Route path="/order/post/:id" exact component={OrderPost} />
 						<Route path="/order/report" exact component={OrderReport} />
 						<Route path="/cart" exact component={Cart}></Route>
+
+						{/* Ashen */}
 						<Route path="/deliveryService" exact component={DeliveryService}></Route>
+						<Route path="/contact-us" exact component={ContactUs}></Route>
 					</div>
 				</CartProvider>
 			</BrowserRouter>
