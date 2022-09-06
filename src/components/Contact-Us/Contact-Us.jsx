@@ -51,7 +51,7 @@ const ContactUs = () => {
 		setSubmitted(true);
 
 		let _messageDTO = { ...messageModel };
-		console.log(_messageDTO);
+
 		const validation = validateInputData(_messageDTO);
 
 		if (validation === true) {
@@ -88,7 +88,6 @@ const ContactUs = () => {
 		const emailFromatConfigurations =
 			/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 		if (!email || emailFromatConfigurations.test(email) === false) {
-			console.log("dev");
 			setIsValidEmail(false);
 		} else {
 			setIsValidEmail(true);
