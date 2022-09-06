@@ -8,7 +8,7 @@ import "primereact/resources/themes/lara-light-indigo/theme.css"; //theme
 import "primereact/resources/primereact.min.css"; //core css
 import "primeicons/primeicons.css"; //icons
 
-export class SidebarDemo extends Component {
+export class SidebarAdminDemo extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -36,9 +36,10 @@ export class SidebarDemo extends Component {
             onHide={() => this.setState({ visibleLeft: false })}
           >
             <h2>Home</h2>
-            <h2>Products</h2>
+            <h2>Authentication Management</h2>
             <h2>About Us</h2>
             <h2>Contact Us</h2>
+
           </Sidebar>
           <div className="row" style={{backgroundColor:'#0b22a1'}}>
             <div className="col-3">
