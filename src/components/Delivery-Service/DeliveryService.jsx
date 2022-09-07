@@ -360,7 +360,11 @@ const DeliveryService = () => {
 								autoFocus
 								className={classNames({ "p-invalid": submitted && !deliveryService.name })}
 							/>
-							{submitted && !deliveryService.name && <small className="p-error">Full Name is required.</small>}
+							{submitted && !deliveryService.name && (
+								<small className="p-error" style={{ fontSize: "10px" }}>
+									Full Name is required.
+								</small>
+							)}
 						</div>
 						<div className="field">
 							<label htmlFor="email">Email </label>
@@ -371,9 +375,15 @@ const DeliveryService = () => {
 								required
 								className={classNames({ "p-invalid": submitted && !deliveryService.email })}
 							/>
-							{submitted && !deliveryService.email && <small className="p-error">Email is required.</small>}
+							{submitted && !deliveryService.email && (
+								<small className="p-error" style={{ fontSize: "10px" }}>
+									Email is required.
+								</small>
+							)}
 							{submitted && !isValidEmail && (
-								<small className="p-error">Invalid email address. E.g. example@gmail.com</small>
+								<small className="p-error" style={{ fontSize: "10px" }}>
+									Invalid email address. E.g. example@gmail.com
+								</small>
 							)}
 						</div>
 						<div className="field">
@@ -386,7 +396,9 @@ const DeliveryService = () => {
 								className={classNames({ "p-invalid": submitted && !deliveryService.telephoneNumber })}
 							/>
 							{submitted && !deliveryService.telephoneNumber && (
-								<small className="p-error">Telephone Number is required.</small>
+								<small className="p-error" style={{ fontSize: "10px" }}>
+									Telephone Number is required.
+								</small>
 							)}
 						</div>
 
@@ -399,10 +411,16 @@ const DeliveryService = () => {
 								required
 								className={classNames({ "p-invalid": submitted && !deliveryService.address })}
 							/>
-							{submitted && !deliveryService.address && <small className="p-error">Address is required.</small>}
+							{submitted && !deliveryService.address && (
+								<small className="p-error" style={{ fontSize: "10px" }}>
+									Address is required.
+								</small>
+							)}
 						</div>
 						<div className="field">
-							<label htmlFor="description">Description</label>
+							<label htmlFor="description" style={{ fontSize: "10px" }}>
+								Description
+							</label>
 							<InputTextarea
 								id="description"
 								value={deliveryService.description}
@@ -411,7 +429,11 @@ const DeliveryService = () => {
 								rows={3}
 								cols={20}
 							/>
-							{submitted && !deliveryService.description && <small className="p-error">Description is required.</small>}
+							{submitted && !deliveryService.description && (
+								<small className="p-error" style={{ fontSize: "10px" }}>
+									Description is required.
+								</small>
+							)}
 						</div>
 					</Dialog>
 				</div>
