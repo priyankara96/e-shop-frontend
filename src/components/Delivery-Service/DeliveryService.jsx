@@ -318,7 +318,7 @@ const DeliveryService = () => {
 	};
 
 	return (
-		<div className="layout-wrapper layout-static layout-theme-light">
+		<div className="layout-wrapper layout-static layout-static-sidebar-inactive layout-theme-light">
 			<div className="layout-main-container">
 				<div>
 					<Toast ref={toast} />

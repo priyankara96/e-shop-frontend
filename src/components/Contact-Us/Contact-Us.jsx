@@ -98,68 +98,70 @@ const ContactUs = () => {
 		<div class="contact-row">
 			<Toast ref={toast} />
 			<div class="col-md-12">
-				<form>
-					<h2> Contact us </h2>
+				<div className="form-data">
+					<form>
+						<div className="h2custome"> Contact us </div>
 
-					<div>
-						<InputText
-							classNames="txtInput"
-							onChange={(event) => onInputChange(event, "name")}
-							className={classNames("txtInput", { "p-invalid": submitted && !messageModel.name })}
-							id="name"
-							required
-							placeholder="Name"
-						/>
-						{/* {submitted && !messageModel.name && message.error("Name is required")} */}
-					</div>
+						<div>
+							<InputText
+								classNames="txtInput"
+								onChange={(event) => onInputChange(event, "name")}
+								className={classNames("txtInput", { "p-invalid": submitted && !messageModel.name })}
+								id="name"
+								required
+								placeholder="Name"
+							/>
+							{/* {submitted && !messageModel.name && message.error("Name is required")} */}
+						</div>
 
-					<div>
-						<InputText
-							classNames="txtInput"
-							id="email"
-							onChange={(event) => onInputChange(event, "email")}
-							className={classNames("txtInput", { "p-invalid": submitted && !messageModel.email })}
-							required
-							placeholder="Email"
-						/>
-						{/* {submitted && !messageModel.email && message.error("Email is required.")}
+						<div>
+							<InputText
+								classNames="txtInput"
+								id="email"
+								onChange={(event) => onInputChange(event, "email")}
+								className={classNames("txtInput", { "p-invalid": submitted && !messageModel.email })}
+								required
+								placeholder="Email"
+							/>
+							{/* {submitted && !messageModel.email && message.error("Email is required.")}
 						{submitted && !isValidEmail && (
 							
 								message.error("Invalid email address. E.g. example@gmail.com") 
 							
 						)} */}
-					</div>
-					<div>
-						<InputText
-							classNames="txtInput"
-							onChange={(event) => onInputChange(event, "mobileNumber")}
-							className={classNames("txtInput", { "p-invalid": submitted && !messageModel.mobileNumber })}
-							id="mobileNumber"
-							required
-							placeholder="Mobile Number"
-						/>
-					</div>
-					<div>
-						<InputTextarea
-							classNames="txtInput"
-							onChange={(event) => onInputChange(event, "message")}
-							className={classNames("txtInput", { "p-invalid": submitted && !messageModel.message })}
-							id="message"
-							rows={5}
-							cols={30}
-							autoResize
-							placeholder="Message"
-						/>
-					</div>
+						</div>
+						<div>
+							<InputText
+								classNames="txtInput"
+								onChange={(event) => onInputChange(event, "mobileNumber")}
+								className={classNames("txtInput", { "p-invalid": submitted && !messageModel.mobileNumber })}
+								id="mobileNumber"
+								required
+								placeholder="Mobile Number"
+							/>
+						</div>
+						<div>
+							<InputTextarea
+								classNames="txtInput"
+								onChange={(event) => onInputChange(event, "message")}
+								className={classNames("txtInput", { "p-invalid": submitted && !messageModel.message })}
+								id="message"
+								rows={5}
+								cols={30}
+								autoResize
+								placeholder="Message"
+							/>
+						</div>
 
-					<Button
-						classNames="txtInput"
-						className="txtInput"
-						label="Submit"
-						aria-label="Submit"
-						onClick={() => saveMessage(messageModel)}
-					/>
-				</form>
+						<Button
+							classNames="txtInput"
+							className="txtInput"
+							label="Submit"
+							aria-label="Submit"
+							onClick={() => saveMessage(messageModel)}
+						/>
+					</form>
+				</div>
 			</div>
 		</div>
 	);
