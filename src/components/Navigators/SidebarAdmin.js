@@ -3,6 +3,7 @@ import { Sidebar } from "primereact/sidebar";
 import { Button } from "primereact/button";
 import "./Nav.css";
 import logo from "../../images/logo1.png";
+import dashboard from "../../images/dashboard.png";
 
 import "primereact/resources/themes/lara-light-indigo/theme.css"; //theme
 import "primereact/resources/primereact.min.css"; //core css
@@ -35,6 +36,8 @@ export class SidebarAdminDemo extends Component {
             visible={this.state.visibleLeft}
             onHide={() => this.setState({ visibleLeft: false })}
           >
+
+            <div className="text-center"><a href="/AdminDashbord"><img width={50} src={dashboard} alt="dashboard" className="dashboard" /></a></div>
             <h2>Home</h2>
             <h2>Authentication Management</h2>
             <h2>About Us</h2>
