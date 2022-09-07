@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import "./AMDashboard.css"
 import './StylesCard.css';
 import Admin from "../../images/Admin.png";
+import Admin2 from "../../images/Admin.jpg";
+import Details from "../../images/Details.png";
+import Report from "../../images/Report.png";
 import new_user from "../../images/add_new_user.png";
 import background from "../../images/background2.jpeg";
 
@@ -13,8 +16,9 @@ export default class AMDashboard extends Component {
     <div className style={{ backgroundImage: `url(${background})`, backgroundSize: 'cover' }} >
         <br/>
     <div className="col-md-8 mt-4 mx-auto">
-        <h1 className="text-center" > <font face = "Comic sans MS" size =" 6"> Authentication Management </font> </h1> 
-        <br/>
+        <div className="text-center">
+        <h1 className="text-primary"><font face = "Comic sans MS" size =" 6">Authentication Management</font></h1>
+        </div>
 
         <form onSubmit = { this.onSubmit } className="needs-validation" noValidate >
         <br/>
@@ -42,7 +46,7 @@ export default class AMDashboard extends Component {
                 <div className='card-container'>
                 <div class="card text-center" style = {{backgroundColor:'#F9FAFC'}}>
                     <div class="card-block" ><br/>
-                    <img  style={{height: 130, width: 180}} class="rounded-circle" src={Admin} alt="Card image cap"/>
+                    <img  style={{height: 130, width: 180}} class="rounded-circle" src={Admin2} alt="Card image cap"/>
                     <h4 class="card-title"></h4>  
                     <button type="button" class="btn btn-light btn-lg">
                      <a href="#" style={{ textDecoration: 'none', color: 'Info' }}> Add a new Admin </a>   
@@ -56,7 +60,7 @@ export default class AMDashboard extends Component {
                 <div className='card-container'>
                 <div class="card text-center" style = {{backgroundColor:'#F9FAFC'}}>
                     <div class="card-block" ><br/>
-                    <img  style={{height: 130, width: 180}} class="rounded-circle" src={Admin} alt="Card image cap"/>
+                    <img  style={{height: 130, width: 180}} class="rounded-circle" src={Details} alt="Card image cap"/>
                     <h4 class="card-title"></h4>  
                     <button type="button" class="btn btn-light btn-lg">
                      <a href="#" style={{ textDecoration: 'none', color: 'Info' }}> Details of all Users </a>   
@@ -75,7 +79,7 @@ export default class AMDashboard extends Component {
                 <div className='card-container'>
                 <div class="card text-center" style = {{backgroundColor:'#F9FAFC'}}>
                     <div class="card-block" ><br/>
-                    <img  style={{height: 130, width: 180}} class="rounded-circle" src={Admin} alt="Card image cap"/>
+                    <img  style={{height: 130, width: 180}} class="rounded-circle" src={Report} alt="Card image cap"/>
                     <h4 class="card-title"></h4>  
                     <button type="button" class="btn btn-light btn-lg">
                      <a href="#" style={{ textDecoration: 'none', color: 'Info' }}> Generate Report </a>   
