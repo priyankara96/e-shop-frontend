@@ -224,9 +224,54 @@ const DeliveryService = () => {
 					className=" p-button-warning mr-2"
 					onClick={() => handleDelete(rowData._id)}
 				/>
-				<InputSwitch checked={true} style={{ marginRight: ".5em" }} />
+				<InputSwitch
+					checked={rowData.isActive}
+					style={{ marginRight: ".5em" }}
+					onChange={(e) => {
+						handleEnableDisableDeliveryService(rowData._id, rowData.isActive);
+					}}
+				/>
 			</React.Fragment>
 		);
+	};
+
+	const handleEnableDisableDeliveryService = (id, isActive) => {
+		confirmDialog({
+			message:
+				isActive === true
+					? "Do you want to Disable to Delivery Service?"
+					: "Do you want to Enable to Delivery Service?",
+			header: isActive === true ? "Disable to Delivery Service Confirmation" : "Enable Delivery Service Confirmation",
+			icon: "pi pi-info-circle",
+			acceptClassName: "p-button-success",
+			accept: () => acceptEnableDisableDeliveryService(id, isActive),
+			reject,
+		});
+	};
+
+	const acceptEnableDisableDeliveryService = (id, isActive) => {
+		const permistionDTO = {
+			id: id,
+			isActive: isActive,
+		};
+
+		DeliveryServiceApiService.enableDisableDeliveryService(permistionDTO)
+			.then((response) => {
+				if (response.data.isSuccess) {
+					toast.current.show({ severity: "success", summary: "Confirmed", detail: response.data.message, life: 3000 });
+					getDeliveryServices();
+				} else {
+					toast.current.show({ severity: "error", summary: "Rejected", detail: response.data.message, life: 3000 });
+				}
+			})
+			.catch((error) => {
+				toast.current.show({
+					severity: "error",
+					summary: "Rejected",
+					detail: "Error has been Occred please try again",
+					life: 3000,
+				});
+			});
 	};
 
 	const createdOnsBodyTemplate = (rowData) => {
