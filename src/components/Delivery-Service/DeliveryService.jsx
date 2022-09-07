@@ -17,6 +17,7 @@ import { Toolbar } from "primereact/toolbar";
 import { Rating } from "primereact/rating";
 import { InputSwitch } from "primereact/inputswitch";
 import moment from "moment";
+import { ConfirmDialog, confirmDialog } from "primereact/confirmdialog";
 import "./Delivery-Service.scss";
 
 const DeliveryService = () => {
@@ -28,132 +29,6 @@ const DeliveryService = () => {
 		address: "",
 		description: "",
 	};
-
-	const menu = [
-		{
-			label: "Home",
-			items: [
-				{
-					label: "Dashboard",
-					icon: "pi pi-fw pi-home",
-					to: "/",
-				},
-			],
-		},
-		{
-			label: "UI Components",
-			icon: "pi pi-fw pi-sitemap",
-			items: [
-				{ label: "Form Layout", icon: "pi pi-fw pi-id-card", to: "/formlayout" },
-				{ label: "Input", icon: "pi pi-fw pi-check-square", to: "/input" },
-				{ label: "Float Label", icon: "pi pi-fw pi-bookmark", to: "/floatlabel" },
-				{ label: "Invalid State", icon: "pi pi-fw pi-exclamation-circle", to: "invalidstate" },
-				{ label: "Button", icon: "pi pi-fw pi-mobile", to: "/button" },
-				{ label: "Table", icon: "pi pi-fw pi-table", to: "/table" },
-				{ label: "List", icon: "pi pi-fw pi-list", to: "/list" },
-				{ label: "Tree", icon: "pi pi-fw pi-share-alt", to: "/tree" },
-				{ label: "Panel", icon: "pi pi-fw pi-tablet", to: "/panel" },
-				{ label: "Overlay", icon: "pi pi-fw pi-clone", to: "/overlay" },
-				{ label: "Media", icon: "pi pi-fw pi-image", to: "/media" },
-				{ label: "Menu", icon: "pi pi-fw pi-bars", to: "/menu" },
-				{ label: "Message", icon: "pi pi-fw pi-comment", to: "/messages" },
-				{ label: "File", icon: "pi pi-fw pi-file", to: "/file" },
-				{ label: "Chart", icon: "pi pi-fw pi-chart-bar", to: "/chart" },
-				{ label: "Misc", icon: "pi pi-fw pi-circle-off", to: "/misc" },
-			],
-		},
-		{
-			label: "UI Blocks",
-			items: [
-				{ label: "Free Blocks", icon: "pi pi-fw pi-eye", to: "/blocks", badge: "NEW" },
-				{ label: "All Blocks", icon: "pi pi-fw pi-globe", url: "https://www.primefaces.org/primeblocks-react" },
-			],
-		},
-		{
-			label: "Icons",
-			items: [{ label: "PrimeIcons", icon: "pi pi-fw pi-prime", to: "/icons" }],
-		},
-		{
-			label: "Pages",
-			icon: "pi pi-fw pi-clone",
-			items: [
-				{ label: "Crud", icon: "pi pi-fw pi-user-edit", to: "/crud" },
-				{ label: "Timeline", icon: "pi pi-fw pi-calendar", to: "/timeline" },
-				{ label: "Empty", icon: "pi pi-fw pi-circle-off", to: "/empty" },
-			],
-		},
-		{
-			label: "Menu Hierarchy",
-			icon: "pi pi-fw pi-search",
-			items: [
-				{
-					label: "Submenu 1",
-					icon: "pi pi-fw pi-bookmark",
-					items: [
-						{
-							label: "Submenu 1.1",
-							icon: "pi pi-fw pi-bookmark",
-							items: [
-								{ label: "Submenu 1.1.1", icon: "pi pi-fw pi-bookmark" },
-								{ label: "Submenu 1.1.2", icon: "pi pi-fw pi-bookmark" },
-								{ label: "Submenu 1.1.3", icon: "pi pi-fw pi-bookmark" },
-							],
-						},
-						{
-							label: "Submenu 1.2",
-							icon: "pi pi-fw pi-bookmark",
-							items: [
-								{ label: "Submenu 1.2.1", icon: "pi pi-fw pi-bookmark" },
-								{ label: "Submenu 1.2.2", icon: "pi pi-fw pi-bookmark" },
-							],
-						},
-					],
-				},
-				{
-					label: "Submenu 2",
-					icon: "pi pi-fw pi-bookmark",
-					items: [
-						{
-							label: "Submenu 2.1",
-							icon: "pi pi-fw pi-bookmark",
-							items: [
-								{ label: "Submenu 2.1.1", icon: "pi pi-fw pi-bookmark" },
-								{ label: "Submenu 2.1.2", icon: "pi pi-fw pi-bookmark" },
-								{ label: "Submenu 2.1.3", icon: "pi pi-fw pi-bookmark" },
-							],
-						},
-						{
-							label: "Submenu 2.2",
-							icon: "pi pi-fw pi-bookmark",
-							items: [
-								{ label: "Submenu 2.2.1", icon: "pi pi-fw pi-bookmark" },
-								{ label: "Submenu 2.2.2", icon: "pi pi-fw pi-bookmark" },
-							],
-						},
-					],
-				},
-			],
-		},
-		{
-			label: "Get Started",
-			items: [
-				{
-					label: "Documentation",
-					icon: "pi pi-fw pi-question",
-					command: () => {
-						window.location = "#/documentation";
-					},
-				},
-				{
-					label: "View Source",
-					icon: "pi pi-fw pi-search",
-					command: () => {
-						window.location = "https://github.com/primefaces/sakai-react";
-					},
-				},
-			],
-		},
-	];
 
 	const [deliveryServices, setDeliveryServices] = useState(null);
 	const [deliveryService, setDeliveryService] = useState(deliverySeerviceModel);
@@ -343,10 +218,60 @@ const DeliveryService = () => {
 					style={{ marginRight: ".5em" }}
 					onClick={() => handleDeliversyServiceSave(rowData)}
 				/>
-				<Button icon="pi pi-trash" style={{ marginRight: ".5em" }} className=" p-button-warning mr-2" />
-				<InputSwitch checked={true} style={{ marginRight: ".5em" }} />
+				<Button
+					icon="pi pi-trash"
+					style={{ marginRight: ".5em" }}
+					className=" p-button-warning mr-2"
+					onClick={() => handleDelete(rowData._id)}
+				/>
+				<InputSwitch
+					checked={rowData.isActive}
+					style={{ marginRight: ".5em" }}
+					onChange={(e) => {
+						handleEnableDisableDeliveryService(rowData._id, rowData.isActive);
+					}}
+				/>
 			</React.Fragment>
 		);
+	};
+
+	const handleEnableDisableDeliveryService = (id, isActive) => {
+		confirmDialog({
+			message:
+				isActive === true
+					? "Do you want to Disable to Delivery Service?"
+					: "Do you want to Enable to Delivery Service?",
+			header: isActive === true ? "Disable to Delivery Service Confirmation" : "Enable Delivery Service Confirmation",
+			icon: "pi pi-info-circle",
+			acceptClassName: "p-button-success",
+			accept: () => acceptEnableDisableDeliveryService(id, isActive),
+			reject,
+		});
+	};
+
+	const acceptEnableDisableDeliveryService = (id, isActive) => {
+		const permistionDTO = {
+			id: id,
+			isActive: isActive,
+		};
+
+		DeliveryServiceApiService.enableDisableDeliveryService(permistionDTO)
+			.then((response) => {
+				if (response.data.isSuccess) {
+					toast.current.show({ severity: "success", summary: "Confirmed", detail: response.data.message, life: 3000 });
+					getDeliveryServices();
+				} else {
+					toast.current.show({ severity: "error", summary: "Rejected", detail: response.data.message, life: 3000 });
+				}
+			})
+			.catch((error) => {
+				toast.current.show({
+					severity: "error",
+					summary: "Rejected",
+					detail: "Error has been Occred please try again",
+					life: 3000,
+				});
+			});
 	};
 
 	const createdOnsBodyTemplate = (rowData) => {
@@ -357,11 +282,47 @@ const DeliveryService = () => {
 		return moment(rowData.updatedOn).format("MMMM Do YYYY");
 	};
 
+	const handleDelete = (id) => {
+		confirmDialog({
+			message: "Do you want to delete this record?",
+			header: "Delete Confirmation",
+			icon: "pi pi-info-circle",
+			acceptClassName: "p-button-danger",
+			accept: () => acceptFunc(id),
+			reject,
+		});
+	};
+
+	const acceptFunc = (id) => {
+		DeliveryServiceApiService.deleteDeliveryService(id)
+			.then((response) => {
+				if (response.data.isSuccess === true) {
+					toast.current.show({ severity: "success", summary: "Confirmed", detail: response.data.message, life: 3000 });
+					getDeliveryServices();
+				} else {
+					toast.current.show({ severity: "error", summary: "Rejected", detail: response.data.message, life: 3000 });
+				}
+			})
+			.catch((error) => {
+				toast.current.show({
+					severity: "error",
+					summary: "Rejected",
+					detail: "Error has been Occred please try again",
+					life: 3000,
+				});
+			});
+	};
+
+	const reject = () => {
+		toast.current.show({ severity: "warn", summary: "Rejected", detail: "You have rejected", life: 3000 });
+	};
+
 	return (
 		<div className="layout-wrapper layout-static layout-theme-light">
 			<div className="layout-main-container">
 				<div>
 					<Toast ref={toast} />
+					<ConfirmDialog />
 					<div className="card">
 						<Toolbar className="mb-4" left={leftToolbarTemplate} right={rightToolbarTemplate}></Toolbar>
 
