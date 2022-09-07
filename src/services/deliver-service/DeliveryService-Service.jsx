@@ -13,6 +13,10 @@ class DeliveryServiceApiService {
 	deleteDeliveryService(deliveryServiceId) {
 		return axios.delete(`${environment.apiUrl}deleveryService/` + deliveryServiceId);
 	}
+
+	enableDisableDeliveryService(permistionDTO) {
+		return axios.put(`${environment.apiUrl}deleveryService`, permistionDTO);
+	}
 }
 
 export default new DeliveryServiceApiService();
