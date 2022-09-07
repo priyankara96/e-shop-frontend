@@ -4,7 +4,7 @@ import { Button } from "primereact/button";
 import { Chart } from "primereact/chart";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
-import "primeflex/primeflex.css";
+//import "primeflex/primeflex.css";
 import dashboardService from "../../services/dashboard/dashboard.service";
 import moment from "moment";
 
@@ -124,7 +124,7 @@ const AdminMainDashBoard = () => {
 		return moment(rowData.createdOn).format("MMMM Do YYYY");
 	};
 	return (
-		<div className="layout-wrapper layout-static layout-theme-light">
+		<div className="layout-wrapper layout-static layout-static-sidebar-inactive layout-theme-light">
 			<div className="layout-main-container">
 				<div className="grid">
 					<div className="col-12 lg:col-6 xl:col-3">

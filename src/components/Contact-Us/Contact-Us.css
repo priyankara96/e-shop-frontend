@@ -6,7 +6,7 @@
 	box-sizing: border-box;
 }
 
-form {
+.form-data {
 	max-width: 600px;
 	margin: 10px auto;
 	padding: 10px 20px;
@@ -14,13 +14,13 @@ form {
 	border-radius: 8px;
 }
 
-h2 {
+.h2custome {
 	margin: 0 0 30px 0;
 	text-align: center;
 }
 
 @media screen and (min-width: 480px) {
-	form {
+	.form-data {
 		max-width: 1500px;
 	}
 }
