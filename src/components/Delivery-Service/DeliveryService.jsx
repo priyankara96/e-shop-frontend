@@ -249,14 +249,23 @@ const DeliveryService = () => {
 	};
 
 	const acceptFunc = (id) => {
-		DeliveryServiceApiService.deleteDeliveryService(id).then((response) => {
-			if (response.data.isSuccess === true) {
-				toast.current.show({ severity: "success", summary: "Confirmed", detail: response.data.message, life: 3000 });
-				getDeliveryServices();
-			} else {
-				toast.current.show({ severity: "error", summary: "Rejected", detail: response.data.message, life: 3000 });
-			}
-		});
+		DeliveryServiceApiService.deleteDeliveryService(id)
+			.then((response) => {
+				if (response.data.isSuccess === true) {
+					toast.current.show({ severity: "success", summary: "Confirmed", detail: response.data.message, life: 3000 });
+					getDeliveryServices();
+				} else {
+					toast.current.show({ severity: "error", summary: "Rejected", detail: response.data.message, life: 3000 });
+				}
+			})
+			.catch((error) => {
+				toast.current.show({
+					severity: "error",
+					summary: "Rejected",
+					detail: "Error has been Occred please try again",
+					life: 3000,
+				});
+			});
 	};
 
 	const reject = () => {
