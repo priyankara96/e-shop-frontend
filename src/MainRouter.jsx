@@ -4,13 +4,17 @@ import { BrowserRouter, Route } from "react-router-dom";
 import Home from "./components/Home";
 
 // Priyankara
+import Header from "./components/Header";
+import AdminDashbord from "./components/AdminDashbord";
 import Signin from "./components/AuthenticationManagement/Signin";
 import Profile from "./components/AuthenticationManagement/Profile";
 import Registration from "./components/AuthenticationManagement/Registration";
+import AMDashboard from "./components/AuthenticationManagement/AMDashboard";
+
 
 // Chanduni
-import { SidebarDemo } from "./components/Navigators/Sidebar";
-import { NavBar } from "./components/Navigators/NavBar";
+// import { SidebarDemo } from "./components/Navigators/Sidebar";
+// import { NavBar } from "./components/Navigators/NavBar";
 import { default as CreateOrders } from "./components/order-management/CreateOrder";
 import { default as EditOrder } from "./components/order-management/EditOrder";
 import { default as HomeOrder } from "./components/order-management/HomeOrder";
@@ -26,15 +30,17 @@ export default class MainRouter extends Component {
 			<BrowserRouter>
 				<CartProvider>
 					<div style={{ backgroundColor: "#ffff", margin: "0" }}>
-						<SidebarDemo />
-
-						<NavBar />
+						{/* <SidebarDemo />
+						<NavBar /> */}
+						<Header />
 
 						{/* Priyankara */}
 						<Route path="/" exact component={Home} />
+						<Route path="/AdminDashbord" exact component={AdminDashbord} />
                     	<Route path="/login" exact component={Signin} />
                     	<Route path="/Profile" exact component={Profile} /> 
                     	<Route path="/Registration" exact component={Registration} /> 
+						<Route path="/AuthenticationManagementDashboard" exact component={AMDashboard} /> 
 						
 						{/* Chanduni */}
 						<Route path="/order/create" exact component={CreateOrders} />

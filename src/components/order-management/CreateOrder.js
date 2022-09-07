@@ -167,7 +167,7 @@ export default class CreateOrders extends Component {
             />
 
             <section id="hire">
-              <div className="topic">
+              <div className="">
                 <div class="container-fluid">
                   <div class="Jumbotron jumbotron-fluid">
                     <div className="container hire">
@@ -187,7 +187,7 @@ export default class CreateOrders extends Component {
           <div class="col-6">
             <div style={{}}>
               <div className="" style={{ marginTop: "%" }}>
-                <div className="card card1" style={{ width: "80%" }}>
+                <div className="card card1" style={{ width: "70%" }}>
                   <div className="col-md-8 mt-4 mx-auto">
                     <h1 className="text-center">
                       <b></b>{" "}

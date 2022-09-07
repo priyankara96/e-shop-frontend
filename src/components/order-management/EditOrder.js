@@ -102,20 +102,12 @@ export default class EditOrder extends Component {
       <div>
      
       <div className="container">
-        <div class="row">
-        
-    <div class="col-6">
-      <br/>
-      
-      {/* <img src={carpenter2}   /> */}
-     
-    </div>
-          <div class="col-6">
-            <br />
-          
-            {/* <div className="cardedit" style={{ width: "100%" }}> */}
-            <div className = "cardmy">
-            <div className="card card1" style={{width:"100%"}}>
+        <br/>
+        <div style={{fontSize:'15px'}} >
+      <a href="/order/home" class="previous" style={{color:'white'}}>&laquo; Previous</a></div>
+      <div className='container cont'>
+            <div className = "cardmy" >
+            <div className="card card1" style={{width:"50%", marginRight:'50%'}}>
               <div className="card-body">
                 <div className="col-md-8 mt-4 mx-auto">
                   <h1 className="h3 mb-3 font-weight-normal adminletter text-center">Order Detail Edit Form </h1>
@@ -210,14 +202,15 @@ export default class EditOrder extends Component {
               </div>
             </div>
             </div>
-          </div>
+          
 
-        </div>
+       
         
         <br />
         <br />
      
      
+      </div>
       </div>
       </div>
     )

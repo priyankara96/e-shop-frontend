@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-
+import "./myStyles.css";
 class OrderPost extends Component{
   constructor(props){
     super(props);
@@ -30,6 +30,9 @@ class OrderPost extends Component{
         
         
         <div className="container">
+        <br/>
+        <div style={{fontSize:'15px'}} >
+      <a href="/order/home" class="previous" style={{color:'white'}}>&laquo; Previous</a></div>
         <div class="row">
         <div class="col-6">
     <div style={{marginTop:'20px'}}>

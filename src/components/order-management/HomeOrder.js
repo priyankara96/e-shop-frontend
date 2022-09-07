@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import swal from "sweetalert";
+import "./myStyles.css";
 
 class HomeOrder extends Component {
   constructor(props) {
@@ -69,6 +70,9 @@ class HomeOrder extends Component {
     return (
       <div>
         <div className="container">
+          <br/>
+        <div style={{fontSize:'15px'}} >
+      <a href="/order/home" class="previous" style={{color:'white'}}>&laquo; Previous</a></div>
           <div className="text-center">
             <h2 className="adminletter"> Order Summary </h2>
           </div>
