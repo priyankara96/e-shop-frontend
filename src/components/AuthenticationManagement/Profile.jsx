@@ -95,7 +95,7 @@ function Profile() {
   };
 
   const redirect = () => {
-    history.push('/Profile');
+    history.push('/login');
     window.location.reload(true);
   }
   // delete
@@ -112,6 +112,8 @@ function Profile() {
       console.log(" error ", e);
     }
   };
+
+  
 
   return (
 
