@@ -165,7 +165,12 @@ const DeliveryService = () => {
 			DeliveryServiceApiService.saveDeliveryService(deleiveryServiceDTO)
 				.then((response) => {
 					if (response.data.isSuccess) {
-						toast.current.show({ severity: "info", summary: "Confirmed", detail: response.data.message, life: 3000 });
+						toast.current.show({
+							severity: "success",
+							summary: "Confirmed",
+							detail: response.data.message,
+							life: 3000,
+						});
 						setdeleveryServiceDialog(false);
 						setDeliveryService(deliverySeerviceModel);
 
@@ -333,7 +338,7 @@ const DeliveryService = () => {
 							onSelectionChange={(e) => setSelecteddeliveryServices(e.value)}
 							dataKey="_id"
 							paginator
-							rows={8}
+							rows={5}
 							rowsPerPageOptions={[5, 10, 25]}
 							paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
 							currentPageReportTemplate="Showing {first} to {last} of {totalRecords} Delivery Services"
