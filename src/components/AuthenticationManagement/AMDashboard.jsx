@@ -35,7 +35,7 @@ export default class AMDashboard extends Component {
                     <img  style={{height: 130, width: 180}} class="rounded-circle" src={new_user} alt="Card image cap"/>
                     <h4 class="card-title"></h4>  
                     <button type="button" class="btn btn-light btn-lg">
-                     <a href="#" style={{ textDecoration: 'none', color: 'Info' }}> Add a new Customer </a>   
+                     <a href="/Add_Customer" style={{ textDecoration: 'none', color: 'Info' }}> Add a new Customer </a>   
                     </button>
                     </div>
                 </div>
@@ -49,7 +49,7 @@ export default class AMDashboard extends Component {
                     <img  style={{height: 130, width: 180}} class="rounded-circle" src={Admin2} alt="Card image cap"/>
                     <h4 class="card-title"></h4>  
                     <button type="button" class="btn btn-light btn-lg">
-                     <a href="#" style={{ textDecoration: 'none', color: 'Info' }}> Add a new Admin </a>   
+                     <a href="/Add_Admin" style={{ textDecoration: 'none', color: 'Info' }}> Add a new Admin </a>   
                     </button>
                     </div>
                 </div>

@@ -10,6 +10,8 @@ import Signin from "./components/AuthenticationManagement/Signin";
 import Profile from "./components/AuthenticationManagement/Profile";
 import Registration from "./components/AuthenticationManagement/Registration";
 import AMDashboard from "./components/AuthenticationManagement/AMDashboard";
+import Add_Admin from "./components/AuthenticationManagement/Add_Admin";
+import Add_Customer from "./components/AuthenticationManagement/Add_Customer";
 
 // Chanduni
 // import { SidebarDemo } from "./components/Navigators/Sidebar";
@@ -42,6 +44,8 @@ export default class MainRouter extends Component {
 						<Route path="/Profile" exact component={Profile} />
 						<Route path="/Registration" exact component={Registration} />
 						<Route path="/AuthenticationManagementDashboard" exact component={AMDashboard} />
+						<Route path="/Add_Admin" exact component={Add_Admin} />
+						<Route path="/Add_Customer" exact component={Add_Customer} />
 
 						{/* Chanduni */}
 						<Route path="/order/create" exact component={CreateOrders} />
