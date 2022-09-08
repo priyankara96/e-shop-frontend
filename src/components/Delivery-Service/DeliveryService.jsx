@@ -35,7 +35,7 @@ const DeliveryService = () => {
 	const [selecteddeliveryServices, setSelecteddeliveryServices] = useState(null);
 	const [filters, setFilters] = useState(null);
 	const [spinner, showSpinner] = useState(false);
-	const [globalFilter, setGlobalFilter] = useState(null);
+	const [searchText, setSearchText] = useState(null);
 	const [deleveryServiceDialog, setdeleveryServiceDialog] = useState(false);
 	const [submitted, setSubmitted] = useState(false);
 	const [isValidEmail, setIsValidEmail] = useState(true);
@@ -50,7 +50,10 @@ const DeliveryService = () => {
 	const getDeliveryServices = () => {
 		showSpinner(true);
 		setTimeout(() => {
-			DeliveryServiceApiService.getDeliveryServiceDetails()
+			const filterModel = {
+				searchText: searchText,
+			};
+			DeliveryServiceApiService.getDeliveryServiceDetails(filterModel)
 				.then((response) => {
 					setDeliveryServices(response.data);
 					showSpinner(false);
@@ -58,7 +61,7 @@ const DeliveryService = () => {
 				.catch((error) => {
 					showSpinner(false);
 				});
-		}, 3000);
+		}, 1000);
 	};
 
 	const onInputChange = (event, name) => {
@@ -205,10 +208,16 @@ const DeliveryService = () => {
 			<h5 className="mx-0 my-1">Delivery Services</h5>
 			<span className="p-input-icon-left">
 				<i className="pi pi-search" />
-				<InputText type="search" onInput={(e) => setGlobalFilter(e.target.value)} placeholder="Search..." />
+				<InputText type="search" onInput={(e) => onSearchTextChanged(e.target.value)} placeholder="Search..." />
 			</span>
 		</div>
 	);
+
+	const onSearchTextChanged = (value) => {
+		console.log(value);
+		setSearchText(value);
+		getDeliveryServices();
+	};
 
 	const statusBodyTemplate = (rowData) => {
 		return <span className={`delivery-service-status-badge-${rowData.isActive}`}>{rowData.isActive}</span>;
@@ -342,7 +351,6 @@ const DeliveryService = () => {
 							rowsPerPageOptions={[5, 10, 25]}
 							paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
 							currentPageReportTemplate="Showing {first} to {last} of {totalRecords} Delivery Services"
-							globalFilter={globalFilter}
 							header={header}
 							responsiveLayout="scroll"
 						>
