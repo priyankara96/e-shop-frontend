@@ -38,10 +38,10 @@ export class SidebarAdminDemo extends Component {
           >
 
             <div className="text-center"><a href="/AdminDashbord"><img width={50} src={dashboard} alt="dashboard" className="dashboard" /></a></div>
-            <h2>Home</h2>
-            <h2>Authentication Management</h2>
-            <h2>About Us</h2>
-            <h2>Contact Us</h2>
+            <a href="/AdminDashbord"><h2>Home</h2></a>
+            <a href="/AuthenticationManagementDashboard"><h2>Authentication Management</h2></a>
+            <a href="#"><h2>About Us</h2></a>
+            <a href="#"><h2>Contact Us</h2></a>
 
           </Sidebar>
           <div className="row" style={{backgroundColor:'#0b22a1'}}>
