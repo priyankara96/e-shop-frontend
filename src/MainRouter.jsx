@@ -8,6 +8,7 @@ import Header from "./components/Header";
 import AdminDashbord from "./components/AdminDashbord";
 import Signin from "./components/AuthenticationManagement/Signin";
 import Profile from "./components/AuthenticationManagement/Profile";
+import DeleteProfile from "./components/AuthenticationManagement/DeleteProfile";
 import Registration from "./components/AuthenticationManagement/Registration";
 import AMDashboard from "./components/AuthenticationManagement/AMDashboard";
 import Add_Admin from "./components/AuthenticationManagement/Add_Admin";
@@ -42,6 +43,7 @@ export default class MainRouter extends Component {
 						<Route path="/AdminDashbord" exact component={AdminDashbord} />
 						<Route path="/login" exact component={Signin} />
 						<Route path="/Profile" exact component={Profile} />
+						<Route path="/DeleteProfile" exact component={DeleteProfile} />
 						<Route path="/Registration" exact component={Registration} />
 						<Route path="/AuthenticationManagementDashboard" exact component={AMDashboard} />
 						<Route path="/Add_Admin" exact component={Add_Admin} />
