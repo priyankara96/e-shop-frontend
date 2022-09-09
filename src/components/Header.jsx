@@ -67,7 +67,7 @@ function Header() {
 						</button>
 
 						<form class="form-inline my-2 my-lg-0">
-							<a class="nav-link" href="/login">
+							<a class="nav-link" href="/login" onClick={logout}>
 								<AiOutlineLogin />
 								&nbsp; Sign in &nbsp;
 							</a>
