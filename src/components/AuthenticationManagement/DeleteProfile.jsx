@@ -36,9 +36,9 @@ function DeleteProfile() {
             <h2 class="text-danger">Account does not exist !</h2>
             <h2 class="text-danger">Has been deleted.</h2>
             <div style={{marginLeft:"200px"}}>
-            <a href="/Registration">
+            <a href="/">
                 <Button type="primary" onClick={logout}>
-                    Create New Account
+                    Go to home page
                 </Button>
             </a>
             </div>
