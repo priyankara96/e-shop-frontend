@@ -4,6 +4,7 @@ import background from "../images/admin-background.jpg";
 import image1 from "../images/Admin.png";
 import image2 from "../images/Add.png";
 
+
 export default class MainDashboard extends Component {
 
   render() {
@@ -39,10 +40,10 @@ export default class MainDashboard extends Component {
                 <div className='card-container'>
                 <div class="card text-center" style = {{backgroundColor:'#F9FAFC'}}>
                     <div class="card-block" ><br/>
-                    <img  style={{height: 130, width: 180}} class="rounded-circle" src={image2} alt="Card image cap"/>
+                    <img  style={{height: 130, width: 180}} class="rounded-circle" src='https://kartkonnect.com/wp-content/uploads/2020/08/new14.jpg' alt="Card image cap"/>
                     <h4 class="card-title"></h4>  
                     <button type="button" class="btn btn-light btn-lg">
-                     <a href="#" style={{ textDecoration: 'none', color: 'Info' }}> 02 </a>   
+                     <a href="/order" style={{ textDecoration: 'none', color: 'Info' }}> Order Management </a>   
                     </button>
                     </div>
                 </div>
