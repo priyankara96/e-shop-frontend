@@ -35,11 +35,11 @@ class OrderPost extends Component{
       <a href="/order/home" class="previous" style={{color:'white'}}>&laquo; Previous</a></div>
         <div class="row">
         <div class="col-6">
-    <div style={{marginTop:'20px'}}>
+    <div style={{marginTop:'20px', fontSize:'25px'}}>
           <h1>{name}</h1>
           
           <hr/>
-          <dl className="row">
+          <dl className="row" style={{fontSize:'20px'}}>
             <dt className="col-sm-3">Postal No</dt>
             <dd className="col-sm-9">{postalNo}</dd>
             <dt className="col-sm-3">Street</dt>
@@ -60,13 +60,18 @@ class OrderPost extends Component{
     </div>
     <div class="col-6">
     <div className="imageprofile">
-          <img src=""alt="" className="rounded-circle" style={{marginLeft:"20%"}}/>
+          <img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/14cb6b84808917.5d68451d7d126.gif"alt="" className="rounded-circle" style={{marginLeft:"50%", height:'50%', width:'50%'}}/>
           </div>
     </div>
     
     
   </div>
-        
+        <br/>
+        <br/><br/>
+        <br/><br/>
+        <br/><br/>
+        <br/><br/>
+        <br/>
         </div>
         </div>
         

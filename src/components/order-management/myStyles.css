@@ -7,6 +7,7 @@
 .alignment{
     margin-left: 50px;
     margin-top: 10px;
+    font-size: larger;
 }
 .topic{
     text-shadow: 10px;
@@ -22,7 +23,6 @@ a {
     padding: 8px 16px;
   }
   a:hover {
-    background-color: #ddd;
     color: black;
   }
   .previous {
@@ -33,4 +33,11 @@ a {
     width: 110px;
     
   }
-  
+  .textsize{
+    font-size: medium;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  }
+  .textsize2{
+    font-size: small;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  }

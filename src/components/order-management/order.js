@@ -1,9 +1,31 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
 export default class order extends Component {
-  render() {
-    return (
-      <div>order</div>
-    )
-  }
+	render() {
+		return (
+			<div className="container">
+				<div className="text-center">
+					<br />
+					<h1><font face = "Comic sans MS" size =" 6">Welcome to Order Management</font></h1>
+					<div class="container">
+						<div class="row">
+							<div class="col">
+                <br/><br/>
+								<img src="https://www.v1prototype.com/wp-content/uploads/2022/06/640.gif" style={{ height: "60%" }} />
+							</div>
+							<div class="col">
+                <br/> <br/><br/><br/><br/>
+                <button  type="button" class="btn btn-outline-info" style={{width:'220px', height:'70px'}}>
+								<h2> <a href='/order/home'>View Order Summary</a></h2></button>
+                <br/><br/> <br/><br/>
+                <button  type="button" class="btn btn-outline-info" style={{width:'220px', height:'60px', }}>
+                  <h2 ><a href='/order/report' >Generate Report</a></h2></button>
+                
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		);
+	}
 }
