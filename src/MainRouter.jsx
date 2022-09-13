@@ -27,6 +27,7 @@ import Cart from "./components/Product-management/Cart";
 import DeliveryService from "./components/Delivery-Service/DeliveryService";
 import ContactUs from "./components/Contact-Us/Contact-Us";
 import AdminMainDashBoard from "./components/AdminMainDashboard/AdminMainDashboard";
+import order from "./components/order-management/order";
 
 export default class MainRouter extends Component {
 	render() {
@@ -56,6 +57,7 @@ export default class MainRouter extends Component {
 						<Route path="/order/post/:id" exact component={OrderPost} />
 						<Route path="/order/report" exact component={OrderReport} />
 						<Route path="/cart" exact component={Cart}></Route>
+						<Route path="/order" exact component={order}></Route>
 
 						{/* Ashen */}
 						<Route path="/deliveryService" exact component={DeliveryService}></Route>
