@@ -1,5 +1,6 @@
 import React, { Component, useEffect, useRef, useState } from "react";
 import DeliveryServiceApiService from "../../services/deliver-service/DeliveryService-Service";
+import ReportManagerApiService from "../../services/report-manager/report.manager.api";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 import { classNames } from "primereact/utils";
@@ -90,9 +91,20 @@ const DeliveryService = () => {
 	const rightToolbarTemplate = () => {
 		return (
 			<React.Fragment>
-				<Button label="Genarate Report" icon="pi pi-upload" className="p-button-help" />
+				<Button label="Genarate Report" icon="pi pi-upload" className="p-button-help" onClick={downloadPdf} />
 			</React.Fragment>
 		);
+	};
+
+	const downloadPdf = () => {
+		ReportManagerApiService.downloadPdf().then((response) => {
+			const url = window.URL.createObjectURL(new Blob([response.data]));
+			const link = document.createElement("a");
+			link.href = url;
+			link.setAttribute("download", "report.pdf");
+			document.body.appendChild(link);
+			link.click();
+		});
 	};
 
 	const validateEmail = (email) => {
