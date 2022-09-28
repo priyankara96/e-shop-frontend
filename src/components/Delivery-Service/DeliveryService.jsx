@@ -48,11 +48,11 @@ const DeliveryService = () => {
 		getDeliveryServices();
 	}, []);
 
-	const getDeliveryServices = () => {
+	const getDeliveryServices = (value) => {
 		showSpinner(true);
 		setTimeout(() => {
 			const filterModel = {
-				searchText: searchText,
+				searchText: value,
 			};
 			DeliveryServiceApiService.getDeliveryServiceDetails(filterModel)
 				.then((response) => {
@@ -258,7 +258,7 @@ const DeliveryService = () => {
 	const onSearchTextChanged = (value) => {
 		console.log(value);
 		setSearchText(value);
-		getDeliveryServices();
+		getDeliveryServices(value);
 	};
 
 	const cols = [
