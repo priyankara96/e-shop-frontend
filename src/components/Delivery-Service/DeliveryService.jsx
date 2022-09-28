@@ -230,12 +230,13 @@ const DeliveryService = () => {
 		setSearchText(value);
 		getDeliveryServices();
 	};
+
 	const cols = [
 		{ field: "name", header: "Name" },
 		{ field: "email", header: "Email" },
-		{ field: "telephoneNumber", header: "Category" },
-		{ field: "createdOn", header: "Quantity" },
-		{ field: "updatedOn", header: "Quantity" },
+		{ field: "telephoneNumber", header: "TelePhone Number" },
+		{ field: "createdOn", header: "Cretaed Date" },
+		{ field: "updatedOn", header: "Updated Date" },
 	];
 
 	const exportColumns = cols.map((col) => ({ title: col.header, dataKey: col.field }));
@@ -243,9 +244,10 @@ const DeliveryService = () => {
 	const exportDataPDF = () => {
 		import("jspdf").then((jsPDF) => {
 			import("jspdf-autotable").then(() => {
-				const doc = new jsPDF.default(0, 0);
-				doc.autoTable(exportColumns, deliveryServices);
-				doc.save("deliveryServices.pdf");
+				const PDFDocument = new jsPDF.default(0, 0);
+
+				PDFDocument.autoTable(exportColumns, deliveryServices);
+				PDFDocument.save("deliveryServices.pdf");
 			});
 		});
 	};
