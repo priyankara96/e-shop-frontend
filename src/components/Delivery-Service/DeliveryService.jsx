@@ -91,9 +91,39 @@ const DeliveryService = () => {
 	const rightToolbarTemplate = () => {
 		return (
 			<React.Fragment>
-				<Button label="Genarate Report" icon="pi pi-upload" className="p-button-help" onClick={exportDataPDF} />
+				<Button
+					label="Export Excel"
+					icon="pi pi-file-excel"
+					style={{ marginRight: "30px" }}
+					className="p-button-success"
+					onClick={exportExcel}
+				/>
+				<Button label="Genarate Report" icon="pi pi-file-pdf" className="p-button-help" onClick={exportDataPDF} />
 			</React.Fragment>
 		);
+	};
+
+	const exportExcel = () => {
+		import("xlsx").then((xlsx) => {
+			const worksheet = xlsx.utils.json_to_sheet(deliveryServices);
+			const workbook = { Sheets: { data: worksheet }, SheetNames: ["data"] };
+			const excelBuffer = xlsx.write(workbook, { bookType: "xlsx", type: "array" });
+			saveAsExcelFile(excelBuffer, "deliveryServices");
+		});
+	};
+
+	const saveAsExcelFile = (buffer, fileName) => {
+		import("file-saver").then((module) => {
+			if (module && module.default) {
+				let EXCEL_TYPE = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8";
+				let EXCEL_EXTENSION = ".xlsx";
+				const data = new Blob([buffer], {
+					type: EXCEL_TYPE,
+				});
+
+				module.default.saveAs(data, fileName + "_export_" + new Date().getTime() + EXCEL_EXTENSION);
+			}
+		});
 	};
 
 	const downloadPdf = () => {
