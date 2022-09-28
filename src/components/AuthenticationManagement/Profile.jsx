@@ -5,6 +5,7 @@ import 'antd/dist/antd.css';
 import useRequest from "../../services/RequestContext";
 import useUser from "../../services/UserContext";
 import { Alert } from 'antd';
+import swal from 'sweetalert';
 import { useHistory} from "react-router-dom";
 
 
@@ -88,16 +89,21 @@ function Profile() {
       );
 
       console.log("api user details updated", result);
-      window.location.reload(true);
+          swal({ text: "User details Updated Successfully !",
+                icon: "success", button: "Okay!"})
+                  .then((value) => {
+                    window.location.reload(true);
+              });
+      
     } catch (e) {
       console.log("update error ", e);
     }
   };
 
-  const redirect = () => {
-    history.push('/Profile');
-    window.location.reload(true);
-  }
+  // const redirect = () => {
+  //   history.push('/DeleteProfile');
+  //   window.location.reload(true);
+  // }
   // delete
   const onDelete = async value => {
     try {
@@ -105,13 +111,21 @@ function Profile() {
       if (result.status === 200) {
         await fetchAuthenticationStudent();
         setData(undefined);
-        redirect();
+        // redirect();
       }
       console.log("api call profile deleted", result);
+      swal({ text: "Account Deleted Successfully !",
+                icon: "success", button: "Okay!"})
+                  .then((value) => {
+                    history.push('/DeleteProfile');
+                    window.location.reload(true);
+              });
     } catch (e) {
       console.log(" error ", e);
     }
   };
+
+  
 
   return (
 
@@ -164,7 +178,7 @@ function Profile() {
                 name={["inputpw"]}
                 label="Password"
               >
-                <Input />
+                <Input.Password />
               </Form.Item>
 
               <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>

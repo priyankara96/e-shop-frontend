@@ -8,8 +8,11 @@ import Header from "./components/Header";
 import AdminDashbord from "./components/AdminDashbord";
 import Signin from "./components/AuthenticationManagement/Signin";
 import Profile from "./components/AuthenticationManagement/Profile";
+import DeleteProfile from "./components/AuthenticationManagement/DeleteProfile";
 import Registration from "./components/AuthenticationManagement/Registration";
 import AMDashboard from "./components/AuthenticationManagement/AMDashboard";
+import Add_Admin from "./components/AuthenticationManagement/Add_Admin";
+import Add_Customer from "./components/AuthenticationManagement/Add_Customer";
 
 // Chanduni
 // import { SidebarDemo } from "./components/Navigators/Sidebar";
@@ -24,6 +27,7 @@ import Cart from "./components/Product-management/Cart";
 import DeliveryService from "./components/Delivery-Service/DeliveryService";
 import ContactUs from "./components/Contact-Us/Contact-Us";
 import AdminMainDashBoard from "./components/AdminMainDashboard/AdminMainDashboard";
+import order from "./components/order-management/order";
 
 export default class MainRouter extends Component {
 	render() {
@@ -40,8 +44,11 @@ export default class MainRouter extends Component {
 						<Route path="/AdminDashbord" exact component={AdminDashbord} />
 						<Route path="/login" exact component={Signin} />
 						<Route path="/Profile" exact component={Profile} />
+						<Route path="/DeleteProfile" exact component={DeleteProfile} />
 						<Route path="/Registration" exact component={Registration} />
 						<Route path="/AuthenticationManagementDashboard" exact component={AMDashboard} />
+						<Route path="/Add_Admin" exact component={Add_Admin} />
+						<Route path="/Add_Customer" exact component={Add_Customer} />
 
 						{/* Chanduni */}
 						<Route path="/order/create" exact component={CreateOrders} />
@@ -50,6 +57,7 @@ export default class MainRouter extends Component {
 						<Route path="/order/post/:id" exact component={OrderPost} />
 						<Route path="/order/report" exact component={OrderReport} />
 						<Route path="/cart" exact component={Cart}></Route>
+						<Route path="/order" exact component={order}></Route>
 
 						{/* Ashen */}
 						<Route path="/deliveryService" exact component={DeliveryService}></Route>

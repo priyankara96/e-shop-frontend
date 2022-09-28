@@ -57,7 +57,7 @@ class OrderReport extends Component {
           <div className="text-center">
             <br />
             <br />
-            <h2 className="adminletter">
+            <h2 className="adminletter" style={{fontSize:'25px'}}>
               {" "}
               Order Report {" "}
             </h2>
@@ -66,7 +66,7 @@ class OrderReport extends Component {
           </div>
           
 
-          <table id="order-table" className="table table-striped">
+          <table id="order-table" className="table table-striped" style={{fontSize:'15px'}}>
             <thead className="thead-dark">
               <tr>
                 <th scope="col">Order Index</th>
@@ -103,7 +103,7 @@ class OrderReport extends Component {
 
           <br />
           <div style={{marginLeft:'80%'}}>
-            <button className="btn btn-primary" onClick={this.jsPdfGenerator}>
+            <button className="btn btn-primary" onClick={this.jsPdfGenerator} style={{width:'170px', height:'40px', fontSize:'15px'}}>
             Generate Report PDF
           </button></div>
           

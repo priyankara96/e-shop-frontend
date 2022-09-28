@@ -49,7 +49,16 @@ export default class EditOrder extends Component {
     }
 
     console.log(data)
-
+    const re = /^[0-9\b]+$/;
+		if (name == "" || postalNo == "" || street == "" || town == "" || contactNo == "" || orderDate == "") {
+			swal("Please fill the form correctly", "Form values cannot be empty", "error");
+		} else if (name.length < 2) {
+			swal("User name invalid", "length should be greater than 2", "error");
+		} else if (!re.test(String(contactNo)) || contactNo.length != 10) {
+			swal("Contact Number invalid", "contact number should be valid pattern", "error");
+		} else if (town.length < 2) {
+			swal(" Please enter valid town", "length should be greater than 2", "error");
+		} else {
     axios.put(`http://localhost:4000/order/update/${id}`, data).then((res) => {
       if (res.data.success) {
 
@@ -68,6 +77,7 @@ export default class EditOrder extends Component {
         )
       }
     })
+  }
   }
 
   componentDidMount() {
@@ -110,10 +120,10 @@ export default class EditOrder extends Component {
             <div className="card card1" style={{width:"50%", marginRight:'50%'}}>
               <div className="card-body">
                 <div className="col-md-8 mt-4 mx-auto">
-                  <h1 className="h3 mb-3 font-weight-normal adminletter text-center">Order Detail Edit Form </h1>
+                  <h1 className="h3 mb-3 font-weight-normal text-center" style={{fontSize:'29px'}}>Order Detail Edit Form </h1>
                   <form className="needs-validation" >
                     <div className="form-group" style={{ marginBottom: '15px' }}>
-                      <label style={{ marginBottom: '5px' }}  className="adminletter">Customer Name: </label>
+                      <label style={{ marginBottom: '5px' }}  className="topic">Customer Name: </label>
                       <input type="text"
                         className="form-control"
                         name="name"
@@ -124,7 +134,7 @@ export default class EditOrder extends Component {
                     </div>
 
 
-                    <label style={{ marginBottom: '5px' }} className="adminletter" >Address: </label>
+                    <label style={{ marginBottom: '5px' }} className="topic" >Address: </label>
                     <div class="row">
                       <div class="col">
                         <input type="text"
@@ -155,7 +165,7 @@ export default class EditOrder extends Component {
 
 
                     <div className="form-group" style={{ marginBottom: '15px' }}>
-                      <label style={{ marginBottom: '5px' }}  className="adminletter">Contact Number</label>
+                      <label style={{ marginBottom: '5px' }}  className="topic">Contact Number</label>
                       <input type="text"
                         className="form-control"
                         name="contactNo"
@@ -166,7 +176,7 @@ export default class EditOrder extends Component {
 
 
                     <div className="form-group" style={{ marginBottom: '15px' }}>
-                      <label style={{ marginBottom: '5px' }}  className="adminletter">Order Date</label>
+                      <label style={{ marginBottom: '5px' }}  className="topic">Order Date</label>
                       <input type="date"
                         className="form-control"
                         name="orderDate"
@@ -177,7 +187,7 @@ export default class EditOrder extends Component {
 
 
                     <div className="form-group" style={{ marginBottom: '15px' }}>
-                      <label style={{ marginBottom: '5px' }}  className="adminletter">Status</label>
+                      <label style={{ marginBottom: '5px' }}  className="topic">Status</label>
                       <input type="text"
                         className="form-control"
                         name="status"
@@ -190,7 +200,7 @@ export default class EditOrder extends Component {
                    
                     <div className="text-center">
                     
-                      <button className="btn btn-success" type="submit" style={{ marginTop: '10px' }} onClick={this.onSubmit}>
+                      <button className="btn btn-success textsize" type="submit" style={{ marginTop: '10px', width: "200px", height:'40px'  }} onClick={this.onSubmit}>
                         <i className="far fa-check-square"></i>
                         &nbsp; Update
                       </button>
