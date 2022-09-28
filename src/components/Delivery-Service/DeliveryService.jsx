@@ -91,7 +91,7 @@ const DeliveryService = () => {
 	const rightToolbarTemplate = () => {
 		return (
 			<React.Fragment>
-				<Button label="Genarate Report" icon="pi pi-upload" className="p-button-help" onClick={downloadPdf} />
+				<Button label="Genarate Report" icon="pi pi-upload" className="p-button-help" onClick={exportDataPDF} />
 			</React.Fragment>
 		);
 	};
@@ -230,7 +230,25 @@ const DeliveryService = () => {
 		setSearchText(value);
 		getDeliveryServices();
 	};
+	const cols = [
+		{ field: "name", header: "Name" },
+		{ field: "email", header: "Email" },
+		{ field: "telephoneNumber", header: "Category" },
+		{ field: "createdOn", header: "Quantity" },
+		{ field: "updatedOn", header: "Quantity" },
+	];
 
+	const exportColumns = cols.map((col) => ({ title: col.header, dataKey: col.field }));
+
+	const exportDataPDF = () => {
+		import("jspdf").then((jsPDF) => {
+			import("jspdf-autotable").then(() => {
+				const doc = new jsPDF.default(0, 0);
+				doc.autoTable(exportColumns, deliveryServices);
+				doc.save("deliveryServices.pdf");
+			});
+		});
+	};
 	const statusBodyTemplate = (rowData) => {
 		return <span className={`delivery-service-status-badge-${rowData.isActive}`}>{rowData.isActive}</span>;
 	};
@@ -353,6 +371,7 @@ const DeliveryService = () => {
 						<Toolbar className="mb-4" left={leftToolbarTemplate} right={rightToolbarTemplate}></Toolbar>
 
 						<DataTable
+							id="deliveryService-Table"
 							ref={dt}
 							value={deliveryServices}
 							selection={selecteddeliveryServices}
