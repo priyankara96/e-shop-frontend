@@ -350,14 +350,6 @@ const DeliveryService = () => {
 			});
 	};
 
-	const createdOnsBodyTemplate = (rowData) => {
-		return moment(rowData.createdOn).format("MMMM Do YYYY");
-	};
-
-	const updatedOnBodyTemplate = (rowData) => {
-		return moment(rowData.updatedOn).format("MMMM Do YYYY");
-	};
-
 	const handleDelete = (id) => {
 		confirmDialog({
 			message: "Do you want to delete this record?",
@@ -429,18 +421,8 @@ const DeliveryService = () => {
 								style={{ minWidth: "10rem", fontSize: "15px" }}
 								header="Telphone Number"
 							></Column>
-							<Column
-								field="createdOn"
-								body={createdOnsBodyTemplate}
-								style={{ minWidth: "10rem", fontSize: "15px" }}
-								header="Created Date"
-							></Column>
-							<Column
-								field="updatedOn"
-								body={updatedOnBodyTemplate}
-								style={{ minWidth: "10rem", fontSize: "15px" }}
-								header="Updated Date"
-							></Column>
+							<Column field="createdOn" style={{ minWidth: "10rem", fontSize: "15px" }} header="Created Date"></Column>
+							<Column field="updatedOn" style={{ minWidth: "10rem", fontSize: "15px" }} header="Updated Date"></Column>
 
 							{/* <Column
 								field="isActive"
