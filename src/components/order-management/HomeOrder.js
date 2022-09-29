@@ -142,11 +142,20 @@ class HomeOrder extends Component {
 						<br />
 						<br />
 					</table>
-					<br />
-					<br />
-					<br />
-					<br />
-					<br />
+			
+				
+				</div>
+
+				<div class="center">
+					<div class="pagination">
+						<a href="#">&laquo;</a>
+
+						<a href="#" class="active">
+							1
+						</a>
+						<a href="#">2</a>
+						<a href="#">&raquo;</a>
+					</div>
 				</div>
 			</div>
 		);
