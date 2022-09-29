@@ -25,6 +25,12 @@ import DeliveryService from "./components/Delivery-Service/DeliveryService";
 import ContactUs from "./components/Contact-Us/Contact-Us";
 import AdminMainDashBoard from "./components/AdminMainDashboard/AdminMainDashboard";
 
+// Nipuna 
+import CreatePayment from "./components/Payment/CreatePayemnt";
+import EditPayment from "./components/Payment/EditPayment";
+import PostPayementDetails from "./components/Payment/PostPaymentDetails";
+import PaymentDetailsTable from "./components/Payment/PaymentDetailsTable";
+
 export default class MainRouter extends Component {
 	render() {
 		return (
@@ -55,6 +61,12 @@ export default class MainRouter extends Component {
 						<Route path="/deliveryService" exact component={DeliveryService}></Route>
 						<Route path="/contact-us" exact component={ContactUs}></Route>
 						<Route path="/admin" exact component={AdminMainDashBoard}></Route>
+
+						{/* Nipuna */}
+						<Route path="/create" exact component={CreatePayment}></Route>
+						<Route path="/payment/edit/:id" exact component={EditPayment}></Route>
+						<Route path="/postdetails" exact component={PostPayementDetails}></Route>
+						<Route path="/tablehome" exact component={PaymentDetailsTable}></Route>
 					</div>
 				</CartProvider>
 			</BrowserRouter>
