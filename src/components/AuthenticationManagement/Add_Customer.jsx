@@ -38,7 +38,7 @@ function Add_Customer() {
 
           swal({ text: "Successfully Created", icon: "success", button: "Okay!"})
               .then((value) => {
-              window.location = '/AuthenticationManagementDashboard';
+              window.location = '/Details';
           })
       )
       
