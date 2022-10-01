@@ -44,7 +44,26 @@ export default class UserList extends Component {
     }
 
 
+    handleSearchArea = (e) => {
 
+        const searchKey = e.currentTarget.value;
+
+        axios.get('http://localhost:4000/CommonSignup/').then(response => {
+
+
+            const resultt = response.data
+            const result = resultt.filter((props) =>
+                props.name.includes(searchKey) || props.name.toLowerCase().includes(searchKey) ||
+                props.name1.includes(searchKey) || props.name1.toLowerCase().includes(searchKey) ||
+                props.nic.includes(searchKey) || props.nic.toLowerCase().includes(searchKey) ||
+                props.role.includes(searchKey) || props.role.toLowerCase().includes(searchKey) 
+            )
+
+            this.setState({ user: result })
+
+        });
+
+    }
 
       //pdf generating
       jsPdfGenerator = () => {
@@ -82,6 +101,16 @@ export default class UserList extends Component {
                 
                 </div> 
 
+                <div className = "col-lg-3 mt-2 mb-2" >
+                    <div class="form-control input-lg" style={{ backgroundColor: "#e5e3e3"}}>
+                    <input className = "form-control"
+                        type = "search"
+                        placeholder = "Search"
+                        name = "searchQuery"
+                        onChange = { this.handleSearchArea } >
+                    </input> 
+                    </div>
+                </div> 
             
             </div>
 
