@@ -14,6 +14,8 @@ import AMDashboard from "./components/AuthenticationManagement/AMDashboard";
 import Add_Admin from "./components/AuthenticationManagement/Add_Admin";
 import Add_Customer from "./components/AuthenticationManagement/Add_Customer";
 import AuthenticationReport from "./components/AuthenticationManagement/AuthenticationReport";
+import Details from "./components/AuthenticationManagement/Details";
+import All_Edit_Data from "./components/AuthenticationManagement/All_Edit_Data";
 
 // Chanduni
 // import { SidebarDemo } from "./components/Navigators/Sidebar";
@@ -57,6 +59,8 @@ export default class MainRouter extends Component {
 						<Route path="/Add_Admin" exact component={Add_Admin} />
 						<Route path="/Add_Customer" exact component={Add_Customer} />
 						<Route path="/AuthenticationReport" exact component={AuthenticationReport} />
+						<Route path="/Details" exact component={Details} />
+						<Route path="/alledit/:id" exact component={All_Edit_Data} />
 
 						{/* Chanduni */}
 						<Route path="/order/create" exact component={CreateOrders} />

@@ -63,7 +63,7 @@ export default class AMDashboard extends Component {
                     <img  style={{height: 130, width: 180}} class="rounded-circle" src={Details} alt="Card image cap"/>
                     <h4 class="card-title"></h4>  
                     <button type="button" class="btn btn-light btn-lg">
-                     <a href="#" style={{ textDecoration: 'none', color: 'Info' }}> Details of all Users </a>   
+                     <a href="/Details" style={{ textDecoration: 'none', color: 'Info' }}> Details of all Users </a>   
                     </button>
                     </div>
                 </div>
