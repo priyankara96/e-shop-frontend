@@ -1,12 +1,17 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Menu } from "primereact/menu";
+import { classNames } from "primereact/utils";
 import { Button } from "primereact/button";
 import { Chart } from "primereact/chart";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import "primeflex/primeflex.css";
+import { Dialog } from "primereact/dialog";
+import { InputText } from "primereact/inputtext";
+import { InputTextarea } from "primereact/inputtextarea";
 import dashboardService from "../../services/dashboard/dashboard.service";
 import moment from "moment";
+import MessageService from "../../services/message/MessageService";
+import { Toast } from "primereact/toast";
 
 const lineData = {
 	labels: ["January", "February", "March", "April", "May", "June", "July"],
@@ -31,76 +36,27 @@ const lineData = {
 };
 
 const AdminMainDashBoard = () => {
+	let clientMessageModel = {
+		id: null,
+		name: "",
+		email: "",
+		mobileNumber: "",
+		message: "",
+		isActive: false,
+	};
+
 	const [clientMessages, setClientMessages] = useState(null);
+	const [clientMessage, setClientMessage] = useState(clientMessageModel);
 	const [deliveryServicesCount, setDeliveryServicesCount] = useState(0);
 	const [totalUsersCount, setTotalUsersCount] = useState(0);
 	const [totalPendingOrdersCount, setTotalPendingOrdersCount] = useState(0);
 	const [totalMessagesCount, setTotalMessagesCount] = useState(0);
 	const [lineOptions, setLineOptions] = useState(null);
+	const [submitted, setSubmitted] = useState(false);
+	const [clientMessageDialog, setClientMessageDialog] = useState(false);
 
-	const applyLightTheme = () => {
-		const lineOptions = {
-			plugins: {
-				legend: {
-					labels: {
-						color: "#495057",
-					},
-				},
-			},
-			scales: {
-				x: {
-					ticks: {
-						color: "#495057",
-					},
-					grid: {
-						color: "#ebedef",
-					},
-				},
-				y: {
-					ticks: {
-						color: "#495057",
-					},
-					grid: {
-						color: "#ebedef",
-					},
-				},
-			},
-		};
-
-		setLineOptions(lineOptions);
-	};
-
-	const applyDarkTheme = () => {
-		const lineOptions = {
-			plugins: {
-				legend: {
-					labels: {
-						color: "#ebedef",
-					},
-				},
-			},
-			scales: {
-				x: {
-					ticks: {
-						color: "#ebedef",
-					},
-					grid: {
-						color: "rgba(160, 167, 181, .3)",
-					},
-				},
-				y: {
-					ticks: {
-						color: "#ebedef",
-					},
-					grid: {
-						color: "rgba(160, 167, 181, .3)",
-					},
-				},
-			},
-		};
-
-		setLineOptions(lineOptions);
-	};
+	const toast = useRef(null);
+	const dt = useRef(null);
 
 	useEffect(() => {
 		getDashboardMasterData();
@@ -110,12 +66,45 @@ const AdminMainDashBoard = () => {
 		dashboardService
 			.getDashboardMasterData()
 			.then((response) => {
-				console.log(response.data);
 				setDeliveryServicesCount(response.data.deliveryServicesCount);
 				setTotalUsersCount(response.data.totalUsersCount);
 				setTotalPendingOrdersCount(response.data.totalPendingOrdersCount);
 				setTotalMessagesCount(response.data.totalMessagesCount);
 				setClientMessages(response.data.clientMessages);
+			})
+			.catch((error) => {});
+	};
+
+	const openClientMessageDialog = (rowData) => {
+		let _clientMessage = { ...rowData };
+
+		console.log(_clientMessage);
+		setClientMessage({ ..._clientMessage });
+		setClientMessageDialog(true);
+	};
+
+	const hideDialog = () => {
+		setSubmitted(false);
+		setClientMessageDialog(false);
+	};
+
+	const clientMessageDialogFooter = () => {
+		<React.Fragment>
+			<Button label="Cancel" icon="pi pi-times" className="p-button-text" />
+			<Button label="Save" icon="pi pi-check" className="p-button-text" />
+		</React.Fragment>;
+	};
+
+	const markAsRead = (id) => {
+		console.log(id);
+		MessageService.markAsRead(id)
+			.then((response) => {
+				if (response.data.isSuccess) {
+					toast.current.show({ severity: "success", summary: "Confirmed", detail: response.data.message, life: 3000 });
+					setClientMessageDialog(false);
+					setClientMessage(clientMessageModel);
+					getDashboardMasterData();
+				}
 			})
 			.catch((error) => {});
 	};
@@ -232,9 +221,14 @@ const AdminMainDashBoard = () => {
 								<Column
 									header="View"
 									style={{ width: "15%", fontSize: "12px" }}
-									body={() => (
+									body={(rowData) => (
 										<>
-											<Button icon="pi pi-search" type="button" className="p-button-text" />
+											<Button
+												icon="pi pi-search"
+												type="button"
+												className="p-button-text"
+												onClick={() => openClientMessageDialog(rowData)}
+											/>
 										</>
 									)}
 								/>
@@ -249,6 +243,41 @@ const AdminMainDashBoard = () => {
 					</div>
 				</div>
 			</div>
+			<Toast ref={toast} />
+			<Dialog
+				visible={clientMessageDialog}
+				style={{ width: "500px" }}
+				header="Client Message"
+				modal
+				className="p-fluid"
+				footer={clientMessageDialogFooter}
+				onHide={hideDialog}
+			>
+				<div className="field">
+					<label htmlFor="name">Customer Name </label>
+					<InputText id="name" value={clientMessage.name} required />
+				</div>
+				<div className="field">
+					<label htmlFor="email">Email </label>
+					<InputText id="email" value={clientMessage.email} required />
+				</div>
+				<div className="field">
+					<label htmlFor="mobileNumber">Telephone Number </label>
+					<InputText id="mobileNumber" value={clientMessage.mobileNumber} required />
+				</div>
+				<div className="field">
+					<label htmlFor="message" style={{ fontSize: "10px" }}>
+						Message
+					</label>
+					<InputTextarea id="message" value={clientMessage.message} required rows={3} cols={20} />
+				</div>
+				<Button
+					label="Mark as Read"
+					icon="pi pi-check"
+					className="p-button-text"
+					onClick={() => markAsRead(clientMessage._id)}
+				/>
+			</Dialog>
 		</div>
 	);
 };
