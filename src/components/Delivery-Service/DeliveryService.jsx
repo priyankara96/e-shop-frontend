@@ -409,11 +409,6 @@ const DeliveryService = () => {
 							header={header}
 							responsiveLayout="scroll"
 						>
-							<Column
-								selectionMode="multiple"
-								headerStyle={{ width: "3rem", fontSize: "15px" }}
-								exportable={false}
-							></Column>
 							<Column field="name" header="Name" sortable style={{ minWidth: "8rem", fontSize: "15px" }}></Column>
 							<Column field="email" header="Email" sortable style={{ minWidth: "10rem", fontSize: "15px" }}></Column>
 							<Column
