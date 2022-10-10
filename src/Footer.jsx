@@ -4,7 +4,7 @@ export default class Footer extends Component {
   render() {
     return (
       <div>
-        <footer class="bg-dark text-center text-white">
+        <footer class="bg-secondary text-center text-white">
   {/* <!-- Grid container --> */}
   <div class="container p-4 pb-0">
     {/* <!-- Section: Form --> */}
@@ -47,9 +47,9 @@ export default class Footer extends Component {
   {/* <!-- Grid container --> */}
 
   {/* <!-- Copyright --> */}
-  <div class="text-center p-3" style={{backgroundColor:'black'}}>
+  <div class="text-center p-3" style={{backgroundColor:'#3b63a2'}}>
     © 2022 Copyright:
-    <a class="text-white" href="https://mdbootstrap.com/">ESHOP.com</a>
+    <a class="text-white" href="https://mdbootstrap.com/">ESHOP.COM</a>
   </div>
   {/* <!-- Copyright --> */}
 </footer>
