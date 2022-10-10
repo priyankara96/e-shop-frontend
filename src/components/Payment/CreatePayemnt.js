@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import swal from 'sweetalert';
+import Footer from '../../Footer';
 // import './myStyle.css'
 
 
@@ -165,7 +166,7 @@ demo =() => {
           
           <form className="needs-validation" noValidate>
             <div className="form-group" style={{marginBottom:'15px'}}>
-              <label style={{marginBottom:'5px'}} >Card Holdeer Name</label>
+              <b><label style={{marginBottom:'5px'}} >Card Holdeer Name</label></b>
               <input type="text"
               className="form-control"
               name="holdername"
@@ -175,7 +176,7 @@ demo =() => {
             </div>
 
             <div className="form-group" style={{marginBottom:'15px'}}>
-              <label style={{marginBottom:'5px'}}>Cvc</label>
+              <b><label style={{marginBottom:'5px'}}>Cvc</label></b>
               <input type="text"
               className="form-control"
               name="cvc"
@@ -186,7 +187,7 @@ demo =() => {
 
 
             <div className="form-group" style={{marginBottom:'15px'}}>
-              <label style={{marginBottom:'5px'}}> Card Number</label>
+              <b><label style={{marginBottom:'5px'}}> Card Number</label></b>
               <input type="text"
               className="form-control"
               name="cardnum"
@@ -196,7 +197,7 @@ demo =() => {
             </div>
 
             <div className="form-group" style={{marginBottom:'15px'}}>
-              <label style={{marginBottom:'5px'}}>Card Name</label>
+              <b><label style={{marginBottom:'5px'}}>Card Name</label></b>
               <input type="text"
               className="form-control"
               name="cardname"
@@ -206,7 +207,7 @@ demo =() => {
             </div>
         
             <div className="form-group" style={{marginBottom:'15px'}}>
-              <label style={{marginBottom:'5px'}}>Expire Date</label>
+              <b><label style={{marginBottom:'5px'}}>Expire Date</label></b>
               <input type="date"
               className="form-control"
               name="expirdate"
@@ -217,7 +218,7 @@ demo =() => {
 
             
 
-            <label style={{marginBottom:'5px'}}>Payment Status: Pending </label>
+            <b><label style={{marginBottom:'5px'}}>Payment Status: Pending </label></b>
             <br/>
 
             
@@ -240,7 +241,6 @@ demo =() => {
         <br/>
 <br/>
         </div>
-
         </div>
     )
   }
