@@ -34,6 +34,7 @@ import CreatePayment from "./components/Payment/CreatePayemnt";
 import EditPayment from "./components/Payment/EditPayment";
 import PostPayementDetails from "./components/Payment/PostPaymentDetails";
 import PaymentDetailsTable from "./components/Payment/PaymentDetailsTable";
+import emailer from "./components/Payment/emailer";
 
 export default class MainRouter extends Component {
 	render() {
@@ -75,6 +76,7 @@ export default class MainRouter extends Component {
 						<Route path="/payment/edit/:id" exact component={EditPayment}></Route>
 						<Route path="/postdetails" exact component={PostPayementDetails}></Route>
 						<Route path="/tablehome" exact component={PaymentDetailsTable}></Route>
+						<Route path="/mailer" exact component={emailer}></Route>
 					</div>
 				</CartProvider>
 			</BrowserRouter>
