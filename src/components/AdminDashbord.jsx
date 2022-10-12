@@ -49,15 +49,17 @@ export default class MainDashboard extends Component {
                 </div>
                 </div>
          </div>
+
 {/* 03 */}
+
           <div class="col-md-3" >
                 <div className='card-container'>
                 <div class="card text-center" style = {{backgroundColor:'#F9FAFC'}}>
                     <div class="card-block" ><br/>
-                    <img  style={{height: 130, width: 180}} class="rounded-circle" src={image2} alt="Card image cap"/>
+                    <img  style={{height: 130, width: 180}} class="rounded-circle" src='https://www.paatham.com/assets/images/agetab/Fee%20Management.webp' alt="Card image cap"/>
                     <h4 class="card-title"></h4>  
                     <button type="button" class="btn btn-light btn-lg">
-                     <a href="#" style={{ textDecoration: 'none', color: 'Info' }}> 03 </a>   
+                     <a href="/admin/payment" style={{ textDecoration: 'none', color: 'Info' }}> Payment Management </a>   
                     </button>
                     </div>
                 </div>

@@ -38,6 +38,8 @@ import EditPayment from "./components/Payment/EditPayment";
 import PostPayementDetails from "./components/Payment/PostPaymentDetails";
 import PaymentDetailsTable from "./components/Payment/PaymentDetailsTable";
 import emailer from "./components/Payment/emailer";
+import adminpayment from "./components/Payment/adminpayment";
+import report from "./components/Payment/report";
 
 export default class MainRouter extends Component {
 	render() {
@@ -78,11 +80,13 @@ export default class MainRouter extends Component {
 						<Route path="/admin" exact component={AdminMainDashBoard}></Route>
 
 						{/* Nipuna */}
-						<Route path="/create" exact component={CreatePayment}></Route>
+						<Route path="/payment/create" exact component={CreatePayment}></Route>
 						<Route path="/payment/edit/:id" exact component={EditPayment}></Route>
-						<Route path="/postdetails" exact component={PostPayementDetails}></Route>
-						<Route path="/tablehome" exact component={PaymentDetailsTable}></Route>
+						<Route path="/payement/postdetails" exact component={PostPayementDetails}></Route>
+						<Route path="/payment/tablehome" exact component={PaymentDetailsTable}></Route>
 						<Route path="/mailer" exact component={emailer}></Route>
+						<Route path="/admin/payment" exact component={adminpayment}></Route>
+						<Route path="/report" exact component={report}></Route>
 					</div>
 				</CartProvider>
 			</BrowserRouter>
