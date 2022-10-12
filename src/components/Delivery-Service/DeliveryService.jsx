@@ -1,5 +1,6 @@
 import React, { Component, useEffect, useRef, useState } from "react";
 import DeliveryServiceApiService from "../../services/deliver-service/DeliveryService-Service";
+import ReportManagerApiService from "../../services/report-manager/report.manager.api";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 import { classNames } from "primereact/utils";
@@ -35,7 +36,7 @@ const DeliveryService = () => {
 	const [selecteddeliveryServices, setSelecteddeliveryServices] = useState(null);
 	const [filters, setFilters] = useState(null);
 	const [spinner, showSpinner] = useState(false);
-	const [globalFilter, setGlobalFilter] = useState(null);
+	const [searchText, setSearchText] = useState(null);
 	const [deleveryServiceDialog, setdeleveryServiceDialog] = useState(false);
 	const [submitted, setSubmitted] = useState(false);
 	const [isValidEmail, setIsValidEmail] = useState(true);
@@ -47,10 +48,13 @@ const DeliveryService = () => {
 		getDeliveryServices();
 	}, []);
 
-	const getDeliveryServices = () => {
+	const getDeliveryServices = (value) => {
 		showSpinner(true);
 		setTimeout(() => {
-			DeliveryServiceApiService.getDeliveryServiceDetails()
+			const filterModel = {
+				searchText: value,
+			};
+			DeliveryServiceApiService.getDeliveryServiceDetails(filterModel)
 				.then((response) => {
 					setDeliveryServices(response.data);
 					showSpinner(false);
@@ -58,7 +62,7 @@ const DeliveryService = () => {
 				.catch((error) => {
 					showSpinner(false);
 				});
-		}, 3000);
+		}, 1000);
 	};
 
 	const onInputChange = (event, name) => {
@@ -87,9 +91,50 @@ const DeliveryService = () => {
 	const rightToolbarTemplate = () => {
 		return (
 			<React.Fragment>
-				<Button label="Genarate Report" icon="pi pi-upload" className="p-button-help" />
+				<Button
+					label="Export Excel"
+					icon="pi pi-file-excel"
+					style={{ marginRight: "30px" }}
+					className="p-button-success"
+					onClick={exportExcel}
+				/>
+				<Button label="Genarate Report" icon="pi pi-file-pdf" className="p-button-help" onClick={exportDataPDF} />
 			</React.Fragment>
 		);
+	};
+
+	const exportExcel = () => {
+		import("xlsx").then((xlsx) => {
+			const worksheet = xlsx.utils.json_to_sheet(deliveryServices);
+			const workbook = { Sheets: { data: worksheet }, SheetNames: ["data"] };
+			const excelBuffer = xlsx.write(workbook, { bookType: "xlsx", type: "array" });
+			saveAsExcelFile(excelBuffer, "deliveryServices");
+		});
+	};
+
+	const saveAsExcelFile = (buffer, fileName) => {
+		import("file-saver").then((module) => {
+			if (module && module.default) {
+				let EXCEL_TYPE = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8";
+				let EXCEL_EXTENSION = ".xlsx";
+				const data = new Blob([buffer], {
+					type: EXCEL_TYPE,
+				});
+
+				module.default.saveAs(data, fileName + "_export_" + new Date().getTime() + EXCEL_EXTENSION);
+			}
+		});
+	};
+
+	const downloadPdf = () => {
+		ReportManagerApiService.downloadPdf().then((response) => {
+			const url = window.URL.createObjectURL(new Blob([response.data]));
+			const link = document.createElement("a");
+			link.href = url;
+			link.setAttribute("download", "report.pdf");
+			document.body.appendChild(link);
+			link.click();
+		});
 	};
 
 	const validateEmail = (email) => {
@@ -165,7 +210,12 @@ const DeliveryService = () => {
 			DeliveryServiceApiService.saveDeliveryService(deleiveryServiceDTO)
 				.then((response) => {
 					if (response.data.isSuccess) {
-						toast.current.show({ severity: "info", summary: "Confirmed", detail: response.data.message, life: 3000 });
+						toast.current.show({
+							severity: "success",
+							summary: "Confirmed",
+							detail: response.data.message,
+							life: 3000,
+						});
 						setdeleveryServiceDialog(false);
 						setDeliveryService(deliverySeerviceModel);
 
@@ -200,11 +250,37 @@ const DeliveryService = () => {
 			<h5 className="mx-0 my-1">Delivery Services</h5>
 			<span className="p-input-icon-left">
 				<i className="pi pi-search" />
-				<InputText type="search" onInput={(e) => setGlobalFilter(e.target.value)} placeholder="Search..." />
+				<InputText type="search" onInput={(e) => onSearchTextChanged(e.target.value)} placeholder="Search..." />
 			</span>
 		</div>
 	);
 
+	const onSearchTextChanged = (value) => {
+		console.log(value);
+		setSearchText(value);
+		getDeliveryServices(value);
+	};
+
+	const cols = [
+		{ field: "name", header: "Name" },
+		{ field: "email", header: "Email" },
+		{ field: "telephoneNumber", header: "TelePhone Number" },
+		{ field: "createdOn", header: "Cretaed Date" },
+		{ field: "updatedOn", header: "Updated Date" },
+	];
+
+	const exportColumns = cols.map((col) => ({ title: col.header, dataKey: col.field }));
+
+	const exportDataPDF = () => {
+		import("jspdf").then((jsPDF) => {
+			import("jspdf-autotable").then(() => {
+				const PDFDocument = new jsPDF.default(0, 0);
+
+				PDFDocument.autoTable(exportColumns, deliveryServices);
+				PDFDocument.save("deliveryServices.pdf");
+			});
+		});
+	};
 	const statusBodyTemplate = (rowData) => {
 		return <span className={`delivery-service-status-badge-${rowData.isActive}`}>{rowData.isActive}</span>;
 	};
@@ -274,14 +350,6 @@ const DeliveryService = () => {
 			});
 	};
 
-	const createdOnsBodyTemplate = (rowData) => {
-		return moment(rowData.createdOn).format("MMMM Do YYYY");
-	};
-
-	const updatedOnBodyTemplate = (rowData) => {
-		return moment(rowData.updatedOn).format("MMMM Do YYYY");
-	};
-
 	const handleDelete = (id) => {
 		confirmDialog({
 			message: "Do you want to delete this record?",
@@ -327,25 +395,20 @@ const DeliveryService = () => {
 						<Toolbar className="mb-4" left={leftToolbarTemplate} right={rightToolbarTemplate}></Toolbar>
 
 						<DataTable
+							id="deliveryService-Table"
 							ref={dt}
 							value={deliveryServices}
 							selection={selecteddeliveryServices}
 							onSelectionChange={(e) => setSelecteddeliveryServices(e.value)}
 							dataKey="_id"
 							paginator
-							rows={8}
+							rows={5}
 							rowsPerPageOptions={[5, 10, 25]}
 							paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
 							currentPageReportTemplate="Showing {first} to {last} of {totalRecords} Delivery Services"
-							globalFilter={globalFilter}
 							header={header}
 							responsiveLayout="scroll"
 						>
-							<Column
-								selectionMode="multiple"
-								headerStyle={{ width: "3rem", fontSize: "15px" }}
-								exportable={false}
-							></Column>
 							<Column field="name" header="Name" sortable style={{ minWidth: "8rem", fontSize: "15px" }}></Column>
 							<Column field="email" header="Email" sortable style={{ minWidth: "10rem", fontSize: "15px" }}></Column>
 							<Column
@@ -353,18 +416,8 @@ const DeliveryService = () => {
 								style={{ minWidth: "10rem", fontSize: "15px" }}
 								header="Telphone Number"
 							></Column>
-							<Column
-								field="createdOn"
-								body={createdOnsBodyTemplate}
-								style={{ minWidth: "10rem", fontSize: "15px" }}
-								header="Created Date"
-							></Column>
-							<Column
-								field="updatedOn"
-								body={updatedOnBodyTemplate}
-								style={{ minWidth: "10rem", fontSize: "15px" }}
-								header="Updated Date"
-							></Column>
+							<Column field="createdOn" style={{ minWidth: "10rem", fontSize: "15px" }} header="Created Date"></Column>
+							<Column field="updatedOn" style={{ minWidth: "10rem", fontSize: "15px" }} header="Updated Date"></Column>
 
 							{/* <Column
 								field="isActive"

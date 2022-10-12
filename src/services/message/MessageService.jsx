@@ -5,6 +5,10 @@ class MessageApiService {
 	saveMessage(messageDTO) {
 		return axios.post(`${environment.apiUrl}message`, messageDTO);
 	}
+
+	markAsRead(id) {
+		return axios.delete(`${environment.apiUrl}message/` + id);
+	}
 }
 
 export default new MessageApiService();
