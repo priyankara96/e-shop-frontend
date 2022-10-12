@@ -3,7 +3,7 @@ import axios from 'axios';
 import jsPdf from 'jspdf'
 import 'jspdf-autotable'
 
-export default class PaymentDetailsTable extends Component {
+export default class report extends Component {
 constructor(props){
   super(props);
 
@@ -31,6 +31,7 @@ retrievePosts(){
 
   });
 }
+
 
 
 onDelete = (id) =>{
@@ -83,7 +84,7 @@ handleSearchArea = (e) =>{
   //new document in jspdf
   var doc = new jsPdf('p','pt');
 
-  doc.text(210,30," Payment Details")
+  doc.text(210,30,"Card Payment Details")
   doc.autoTable({  html:'#my-table' })
 
   doc.autoTable({
@@ -92,7 +93,7 @@ handleSearchArea = (e) =>{
   })
 
   //save the pdf
-  doc.save(" Payment Details.pdf");
+  doc.save("Card Payment Details.pdf");
 }
 
   render() {
@@ -157,7 +158,6 @@ handleSearchArea = (e) =>{
           </tbody>
 
         </table>
-
 
         <button className="btn btn-success" style={{marginTop:"50px"}}><a href="/add" style={{textDecoration:'none',color:'white'}}> New Payment</a></button>
         <br/>

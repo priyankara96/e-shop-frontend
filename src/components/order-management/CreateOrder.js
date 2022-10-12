@@ -269,7 +269,7 @@ export default class CreateOrders extends Component {
 
 											<br />
 											<button className="btn btn-primary textsize2" type="submit" style={{ marginTop: "15px", width: "200px", height:'40px'  }}>
-												<a href="/" style={{ textDecoration: "none", color: "white" }}>
+												<a href="/payment/create" style={{ textDecoration: "none", color: "white" }}>
 													{" "}
 													<i className="far fa-check-square"></i>
 													&nbsp; Continue with payment
