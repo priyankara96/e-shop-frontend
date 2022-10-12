@@ -9,7 +9,7 @@
 
 .form-profilee h1 {
     text-align: right;
-    font-family: 'Times New Roman';
+    /* font-family: 'Times New Roman'; */
     font-weight: bold;
     font-size: 40px;
     margin-top:-20px;
@@ -17,7 +17,7 @@
 
 .form-profilee h3 {
     text-align: right;
-    font-family: 'Times New Roman';
+    /* font-family: 'Times New Roman'; */
     font-size: 20px;
 }
 

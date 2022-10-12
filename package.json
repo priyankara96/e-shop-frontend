@@ -15,7 +15,7 @@
 		"axios": "^0.27.2",
 		"bootstrap": "^5.2.0",
 		"chart.js": "3.3.2",
-		"file-saver": "^2.0.5",
+		"emailjs-com": "^3.2.0",
 		"jspdf": "^2.5.1",
 		"jspdf-autotable": "^3.5.25",
 		"jwt-decode": "^3.1.2",
@@ -34,8 +34,7 @@
 		"sass-loader": "^13.0.2",
 		"styled-components": "^5.3.5",
 		"sweetalert": "^2.1.2",
-		"web-vitals": "^2.1.4",
-		"xlsx": "^0.18.5"
+		"web-vitals": "^2.1.4"
 	},
 	"scripts": {
 		"start": "react-scripts start",

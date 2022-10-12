@@ -14,6 +14,10 @@ export default function App() {
 					<Router>
 						<MainRouter />
 						<ChatApp/>
+						<br/>
+						<br/>
+						<br/>
+						<br/>
 						<Footer/>
 					</Router>
 				</UserContextProvider>

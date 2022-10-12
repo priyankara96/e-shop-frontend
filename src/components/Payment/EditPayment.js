@@ -194,6 +194,7 @@ export default class EditPayment extends Component {
           </div>
           </div>
           </div>
+        
         </div>
     )
   }
