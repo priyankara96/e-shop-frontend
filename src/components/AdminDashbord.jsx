@@ -146,7 +146,7 @@ export default class MainDashboard extends Component {
 										</div>
 									</div>
 									{/* 06 */}
-									<div class="col-md-3">
+									{/* <div class="col-md-3">
 										<div className="card-container">
 											<div class="card text-center" style={{ backgroundColor: "#F9FAFC" }}>
 												<div class="card-block">
@@ -167,9 +167,9 @@ export default class MainDashboard extends Component {
 												</div>
 											</div>
 										</div>
-									</div>
+									</div> */}
 									{/* 07 */}
-									<div class="col-md-3">
+									{/* <div class="col-md-3">
 										<div className="card-container">
 											<div class="card text-center" style={{ backgroundColor: "#F9FAFC" }}>
 												<div class="card-block">
@@ -190,9 +190,9 @@ export default class MainDashboard extends Component {
 												</div>
 											</div>
 										</div>
-									</div>
+									</div> */}
 									{/* 08 */}
-									<div class="col-md-3">
+									{/* <div class="col-md-3">
 										<div className="card-container">
 											<div class="card text-center" style={{ backgroundColor: "#F9FAFC" }}>
 												<div class="card-block">
@@ -213,12 +213,12 @@ export default class MainDashboard extends Component {
 												</div>
 											</div>
 										</div>
-									</div>
+									</div> */}
 								</div>
 								<br />
 								{/* 09 */}
 								<div class="row">
-									<div class="col-md-3">
+									{/* <div class="col-md-3">
 										<div className="card-container">
 											<div class="card text-center" style={{ backgroundColor: "#F9FAFC" }}>
 												<div class="card-block">
@@ -239,7 +239,7 @@ export default class MainDashboard extends Component {
 												</div>
 											</div>
 										</div>
-									</div>
+									</div> */}
 								</div>
 								<br></br>
 							</div>
