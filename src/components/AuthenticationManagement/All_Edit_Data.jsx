@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import swal from "sweetalert";
+import background from "../../images/art.jpg";
 
 // Update user details
 export default class All_Edit_Data extends Component {
@@ -177,117 +178,143 @@ export default class All_Edit_Data extends Component {
     }
 }
 
-    render() {
-        return ( 
-            <div>
 
-            <div> <br/>
-                <div className="col-md-8 mt-4 mx-auto">
-                <h1 className="text-center" >  Edit User Details </h1> 
-                <br/>
-                <form onSubmit = { this.onSubmit } className="needs-validation" noValidate style={{backgroundColor: "#edefef"}}>
-                <br/><br/>
-                
-                    <div style={{marginLeft:'100px', marginRight:'100px'}}>
+render() {
+    return (
+        
+      
+    <div class="row"  style={{marginTop:'10px'}} >
+
+    <div class="col-6">
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+    
+      <img src="https://cdni.iconscout.com/illustration/premium/thumb/edit-profile-4487168-3726231.png" width="90%" height="70%" marginLeft="20px" />
+      
+    </div>
+    
+    
+    <div class="col-5">
+    <div className="mycard">
+    <div className="card" >
+    
+    <div className="card-body">
+    <div style={{ backgroundImage: `url(${background})`, backgroundSize: 'cover' }}>
+    <br/> 
+    <h1 className="text-center" >  Edit User Details </h1> 
+
+        <div className="col-md-8 mt-4 mx-auto">
+        <br/>
+          
+            <form className="needs-validation" noValidate>
+                <div>
 
                     <div className = "form-group" >
-                    <label > First Name : </label>  
+                    <b><label > First Name : &nbsp; </label></b>
                     <input type = "text"
-                    required className = "form-control"
+                    required className = "form-controll"
                     value = { this.state.name }
                     onChange = { this.onChangeName }
                     /> 
                     </div> <br/> 
 
-                    <div className = "form-group" >
-                    <label > Last Name : </label>  
+                    <div className = "form-groupp" >
+                    <b><label > Last Name : &nbsp; </label></b>
                     <input type = "text"
-                    required className = "form-control"
+                    required className = "form-controll"
                     value = { this.state.name1 }
                     onChange = { this.onChangeName1 }
                     /> 
                     </div> <br/>  
 
-                    <div className = "form-group" >
-                    <label > Birthday : </label>  
+                    <div className = "form-groupp" >
+                    <b><label > Birthday : &nbsp; </label></b>  
                     <input type = "text"
-                    required className = "form-control"
+                    required className = "form-controll"
                     value = { this.state.birthday }
                     onChange = { this.onChangeBirthday }
                     /> 
                     </div> <br/> 
         
 
-                    <div className = "form-group" >
-                    <label > Gender : </label>  
+                    <div className = "form-groupp" >
+                    <b><label > Gender : &nbsp; </label></b>  
                     <input type = "text"
-                    required className = "form-control"
+                    required className = "form-controll"
                     value = { this.state.gender }
                     onChange = { this.onChangeGender }
                     /> 
                     </div> <br/> 
 
-                    <div className = "form-group" >
-                    <label > NIC : </label>  
+                    <div className = "form-groupp" >
+                    <b><label > NIC : &nbsp; </label></b>  
                     <input type = "text"
-                    required className = "form-control"
+                    required className = "form-controll"
                     value = { this.state.nic }
                     onChange = { this.onChangeNIC }
                     /> 
                     </div> <br/> 
 
-                    <div className = "form-group" >
-                    <label > Email : </label>  
+                    <div className = "form-groupp" >
+                    <b><label > Email : &nbsp; </label></b>
                     <input type = "text"
-                    required className = "form-control"
+                    required className = "form-controll"
                     value = { this.state.email }
                     onChange = { this.onChangeEmail }
                     /> 
                     </div> <br/>
 
                     <div className = "form-group" >
-                    <label > Number : </label>  
+                    <b><label > Number : &nbsp; </label></b>  
                     <input type = "text"
-                    required className = "form-control"
+                    required className = "form-controll"
                     value = { this.state.number }
                     onChange = { this.onChangeNumber }
                     /> 
                     </div> <br/>
 
                     <div className = "form-group" >
-                    <label > Role : </label>  
+                    <b><label > Role : &nbsp; </label></b>  
                     <input type = "text"
-                    required className = "form-control"
+                    required className = "form-controll"
                     value = { this.state.role }
                     onChange = { this.onChangeRole }
                     /> 
                     </div> <br/> 
 
                     <div className = "form-group" >
-                    <label > Password : </label>  
+                    <b><label > Password : &nbsp; </label></b>  
                     <input type = "text"
-                    required className = "form-control"
+                    required className = "form-controll"
                     value = { this.state.inputpw }
                     onChange = { this.onChangeInputpw }
                     /> 
                     </div> <br/> 
                     
 
+
+                    <div className = "form-group" style={{marginTop:'5px'}} >
+                    <button className="btn btn-success" type="submit"  onClick={this.onSubmit}>
+                     <h4>Update</h4>
+                    </button>
+                    <a href="/Details"> <button type="button" class="btn btn-warning" > <h4>Cansal &nbsp;</h4> </button></a>
                     </div> 
                     
-                    <div className = "form-group" style={{marginTop:'15px', marginLeft:'200px'}} >
-                    <input type = "submit"
-                    value = "Update"
-                    className = "btn btn-success" />
-                    </div> 
-                    <a href="/Details"> <button type="button" class="btn btn-warning" style={{marginLeft:'200px'}} > Cansal&nbsp; </button></a>
-                    <br/><br/>
-                </form>
+                </div> 
+            </form>
 
-                <br/>
-                </div>
-                </div>
-            </div> 
-        )
-    }
+          
+          </div>
+          </div>
+          </div>
+        </div>
+        </div>
+        <br/>
+        <br/>
+        </div>
+        </div>
+    )
+  }
 }

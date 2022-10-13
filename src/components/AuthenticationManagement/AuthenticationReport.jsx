@@ -102,14 +102,12 @@ export default class UserList extends Component {
                 </div> 
 
                 <div className = "col-lg-3 mt-2 mb-2" >
-                    <div class="form-control input-lg" style={{ backgroundColor: "#e5e3e3"}}>
-                    <input className = "form-control"
+                    <input className = "form-controll"
                         type = "search"
                         placeholder = "Search"
                         name = "searchQuery"
                         onChange = { this.handleSearchArea } >
                     </input> 
-                    </div>
                 </div> 
             
             </div>
