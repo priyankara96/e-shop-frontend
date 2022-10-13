@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
-import "./Dashboard.css"
+import React, { Component } from "react";
+import "./Dashboard.css";
 import background from "../images/admin-background.jpg";
 import image1 from "../images/Admin.png";
 import image2 from "../images/Add.png";
-
 
 export default class MainDashboard extends Component {
 
