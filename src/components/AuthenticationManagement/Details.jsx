@@ -94,23 +94,23 @@ export default class AlldatasList extends Component {
             <div style={{marginLeft:"50px", marginRight:"50px", marginTop:"0px"}}>
                 <br/>
             <div className = "row" >
-            
-                <div className = "col-lg-9 mt-2 mb-2" >
-                <h1 > Details of all Users </h1> 
-                </div > 
+            <h1 className="text-center"  > Details of all Users </h1> 
+            </div>
 
-                    <div className = "col-lg-3 mt-2 mb-2" >
 
-                        <input className = "form-control"
+            <div className = "row" >
+                <div className = "col-lg-9 mt-2 mb-2" ></div> 
+                <div className = "col-lg-3 mt-2 mb-2" >
+                    <input className = "form-controll"
                         type = "search"
                         placeholder = "Search"
                         name = "searchQuery"
                         onChange = { this.handleSearchArea } >
-                        </input> 
-
-                    </div > 
+                    </input> 
+                </div> 
             </div>
-
+            <br/>
+            
             <form style={{backgroundColor: "#ffff"}}>
             <table class="table table-bordered table-white">
                 <thead className = "thead-light" >
