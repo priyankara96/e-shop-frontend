@@ -163,6 +163,8 @@ handleSearchArea = (e) =>{
         <br/>
         
       </div>
+
+      
     )
   }
 }
