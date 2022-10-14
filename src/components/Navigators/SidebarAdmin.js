@@ -44,14 +44,14 @@ export class SidebarAdminDemo extends Component {
 						<a href="/AuthenticationManagementDashboard">
 							<h2>Authentication Management</h2>
 						</a>
+						<a href="/order">
+							<h2>Order Management</h2>
+						</a>
+						<a href="/admin/payment">
+							<h2>Payment Management</h2>
+						</a>
 						<a href="/deliveryService">
 							<h2>Delivery Services</h2>
-						</a>
-						<a href="#">
-							<h2>About Us</h2>
-						</a>
-						<a href="#">
-							<h2>Contact Us</h2>
 						</a>
 					</Sidebar>
 					<div className="row" style={{ backgroundColor: "#0b22a1" }}>
