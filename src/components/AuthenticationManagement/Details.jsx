@@ -90,27 +90,27 @@ export default class AlldatasList extends Component {
     render() {
         return ( 
             <div style={{ backgroundImage: `url(${background})`, backgroundSize: 'cover' }}>
-                <a href="/AuthenticationManagementDashboard" type="button" class="btn btn-outline-secondary" style={{marginLeft:"50px", marginTop:"5px"}} > <AiIcons.AiOutlineHome /> </a>
+                <a href="/AuthenticationManagementDashboard" type="button" class="btn btn-outline-secondary" style={{marginLeft:"50px", marginTop:"5px"}} > <h5><AiIcons.AiOutlineCaretLeft /> &nbsp; </h5> </a>
             <div style={{marginLeft:"50px", marginRight:"50px", marginTop:"0px"}}>
                 <br/>
             <div className = "row" >
-            
-                <div className = "col-lg-9 mt-2 mb-2" >
-                <h1 > Details of all Users </h1> 
-                </div > 
+            <h1 className="text-center"  > Details of all Users </h1> 
+            </div>
 
-                    <div className = "col-lg-3 mt-2 mb-2" >
 
-                        <input className = "form-control"
+            <div className = "row" >
+                <div className = "col-lg-9 mt-2 mb-2" ></div> 
+                <div className = "col-lg-3 mt-2 mb-2" >
+                    <input className = "form-controll"
                         type = "search"
                         placeholder = "Search"
                         name = "searchQuery"
                         onChange = { this.handleSearchArea } >
-                        </input> 
-
-                    </div > 
+                    </input> 
+                </div> 
             </div>
-
+            <br/>
+            
             <form style={{backgroundColor: "#ffff"}}>
             <table class="table table-bordered table-white">
                 <thead className = "thead-light" >
@@ -129,6 +129,20 @@ export default class AlldatasList extends Component {
             <tbody > { this.alldataList() } 
             </tbody> 
             </table>
+
+            {/* ************ */}
+            <div class="center">
+					<div class="pagination">
+						<a href="#">&laquo;</a>
+
+						<a href="/Details" class="active">
+							1
+						</a>
+						{/* <a href="#">2</a> */}
+						<a href="#">&raquo;</a>
+					</div>
+			</div>
+
             </form>
 
             <br/><br/><br/><br/><br/><br/><br/><br/>

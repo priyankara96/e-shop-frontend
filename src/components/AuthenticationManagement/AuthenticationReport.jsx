@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import jsPdf from 'jspdf'
 import 'jspdf-autotable'
+import * as AiIcons from 'react-icons/ai';
 import background from "../../images/background2.jpeg";
 
 
@@ -86,7 +87,7 @@ export default class UserList extends Component {
     render() {
         return ( 
             <div style={{ backgroundImage: `url(${background})`, backgroundSize: 'cover' }}>
-                
+                <a href="/AuthenticationManagementDashboard" type="button" class="btn btn-outline-secondary" style={{marginLeft:"10px", marginTop:"5px"}} > <h5><AiIcons.AiOutlineCaretLeft /> &nbsp; </h5> </a>
             <div className = "container" >
             <div style = {{ float: 'none' }} >
             </div> <br/>
@@ -102,14 +103,12 @@ export default class UserList extends Component {
                 </div> 
 
                 <div className = "col-lg-3 mt-2 mb-2" >
-                    <div class="form-control input-lg" style={{ backgroundColor: "#e5e3e3"}}>
-                    <input className = "form-control"
+                    <input className = "form-controll"
                         type = "search"
                         placeholder = "Search"
                         name = "searchQuery"
                         onChange = { this.handleSearchArea } >
                     </input> 
-                    </div>
                 </div> 
             
             </div>
