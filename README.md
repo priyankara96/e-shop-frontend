@@ -1,11 +1,10 @@
-
-# Group-ID: SER033 
-
 <p align="center">
   <br />
-  <img src="https://user-images.githubusercontent.com/88779731/195771910-e56af080-e7dc-4649-b131-6b473addc1a6.png" width="100" />
+  <img src="https://user-images.githubusercontent.com/88779731/195771910-e56af080-e7dc-4649-b131-6b473addc1a6.png" width="120" />
 </p>
 
+# Group-ID: SER033 
+## E-shop
 ## Group Details
 
 *Member Details :*
