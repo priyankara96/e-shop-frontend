@@ -90,7 +90,7 @@ export default class AlldatasList extends Component {
     render() {
         return ( 
             <div style={{ backgroundImage: `url(${background})`, backgroundSize: 'cover' }}>
-                <a href="/AuthenticationManagementDashboard" type="button" class="btn btn-outline-secondary" style={{marginLeft:"50px", marginTop:"5px"}} > <AiIcons.AiOutlineHome /> </a>
+                <a href="/AuthenticationManagementDashboard" type="button" class="btn btn-outline-secondary" style={{marginLeft:"50px", marginTop:"5px"}} > <h5><AiIcons.AiOutlineCaretLeft /> &nbsp; </h5> </a>
             <div style={{marginLeft:"50px", marginRight:"50px", marginTop:"0px"}}>
                 <br/>
             <div className = "row" >
@@ -129,6 +129,20 @@ export default class AlldatasList extends Component {
             <tbody > { this.alldataList() } 
             </tbody> 
             </table>
+
+            {/* ************ */}
+            <div class="center">
+					<div class="pagination">
+						<a href="#">&laquo;</a>
+
+						<a href="/Details" class="active">
+							1
+						</a>
+						{/* <a href="#">2</a> */}
+						<a href="#">&raquo;</a>
+					</div>
+			</div>
+
             </form>
 
             <br/><br/><br/><br/><br/><br/><br/><br/>

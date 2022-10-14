@@ -35,7 +35,7 @@ export default class AMDashboard extends Component {
                     <img  style={{height: 130, width: 180}} class="rounded-circle" src={new_user} alt="Card image cap"/>
                     <h4 class="card-title"></h4>  
                     <button type="button" class="btn btn-light btn-lg">
-                     <a href="/Add_Customer" style={{ textDecoration: 'none', color: 'Info' }}> Add a new Customer </a>   
+                     <a href="/Add_Customer" style={{ textDecoration: 'none', color: 'Info' }}> <h4>Add a new Customer</h4> </a>   
                     </button>
                     </div>
                 </div>
@@ -49,7 +49,7 @@ export default class AMDashboard extends Component {
                     <img  style={{height: 130, width: 180}} class="rounded-circle" src={Admin2} alt="Card image cap"/>
                     <h4 class="card-title"></h4>  
                     <button type="button" class="btn btn-light btn-lg">
-                     <a href="/Add_Admin" style={{ textDecoration: 'none', color: 'Info' }}> Add a new Admin </a>   
+                     <a href="/Add_Admin" style={{ textDecoration: 'none', color: 'Info' }}> <h4>Add a new Admin</h4> </a>   
                     </button>
                     </div>
                 </div>
@@ -63,7 +63,7 @@ export default class AMDashboard extends Component {
                     <img  style={{height: 130, width: 180}} class="rounded-circle" src={Details} alt="Card image cap"/>
                     <h4 class="card-title"></h4>  
                     <button type="button" class="btn btn-light btn-lg">
-                     <a href="/Details" style={{ textDecoration: 'none', color: 'Info' }}> Details of all Users </a>   
+                     <a href="/Details" style={{ textDecoration: 'none', color: 'Info' }}> <h4>Details of all Users</h4> </a>   
                     </button>
                     </div>
                 </div>
@@ -82,7 +82,7 @@ export default class AMDashboard extends Component {
                     <img  style={{height: 130, width: 180}} class="rounded-circle" src={Report} alt="Card image cap"/>
                     <h4 class="card-title"></h4>  
                     <button type="button" class="btn btn-light btn-lg">
-                     <a href="/AuthenticationReport" style={{ textDecoration: 'none', color: 'Info' }}> Generate Report </a>   
+                     <a href="/AuthenticationReport" style={{ textDecoration: 'none', color: 'Info' }}> <h4>Generate Report</h4> </a>   
                     </button>
                     </div>
                 </div>
