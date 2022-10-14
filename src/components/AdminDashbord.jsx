@@ -41,7 +41,8 @@ export default class MainDashboard extends Component {
 															style={{ textDecoration: "none", color: "Info" }}
 														>
 															{" "}
-															Authentication Management{" "}
+															<h4>Authentication<br/>Management</h4>
+															{" "}
 														</a>
 													</button>
 												</div>
@@ -64,7 +65,8 @@ export default class MainDashboard extends Component {
 													<button type="button" class="btn btn-light btn-lg">
 														<a href="/order" style={{ textDecoration: "none", color: "Info" }}>
 															{" "}
-															Order Management{" "}
+															<h4>Order<br/>Management</h4>
+															{" "}
 														</a>
 													</button>
 												</div>
@@ -89,7 +91,8 @@ export default class MainDashboard extends Component {
 													<button type="button" class="btn btn-light btn-lg">
 														<a href="/admin/payment" style={{ textDecoration: "none", color: "Info" }}>
 															{" "}
-															Payment Management{" "}
+															<h4>Payment<br/>Management</h4>
+															{" "}
 														</a>
 													</button>
 												</div>
@@ -112,7 +115,8 @@ export default class MainDashboard extends Component {
 													<button type="button" class="btn btn-light btn-lg">
 														<a href="/deliveryService" style={{ textDecoration: "none", color: "Info" }}>
 															{" "}
-															Delivery Service Management{" "}
+															<h4>Delivery Service<br/>Management</h4>
+															{" "}
 														</a>
 													</button>
 												</div>
@@ -138,7 +142,8 @@ export default class MainDashboard extends Component {
 													<button type="button" class="btn btn-light btn-lg">
 														<a href="/admin" style={{ textDecoration: "none", color: "Info" }}>
 															{" "}
-															Statistics
+															<h4>Statistics<br/>&nbsp;</h4>
+															{" "}
 														</a>
 													</button>
 												</div>
