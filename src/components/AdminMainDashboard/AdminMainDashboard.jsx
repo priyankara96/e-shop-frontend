@@ -4,7 +4,7 @@ import { Button } from "primereact/button";
 import { Chart } from "primereact/chart";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
-//import "primeflex/primeflex.css";
+import "primeflex/primeflex.css";
 import { Dialog } from "primereact/dialog";
 import { InputText } from "primereact/inputtext";
 import { InputTextarea } from "primereact/inputtextarea";
