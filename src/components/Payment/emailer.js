@@ -30,7 +30,7 @@ const emailer = () => {
       style={{ marginTop: "50px", width: "50%" }}
     >
       <h1 style={{ marginTop: "25px" }} className="text-center">
-        Email confirmation{" "}
+        <b><u>Email Confirmation{" "}</u></b>
       </h1>
 
       <form
@@ -39,7 +39,7 @@ const emailer = () => {
         onSubmit={sendEmail}
       >
         <img
-          src="https://c.tenor.com/Trqn0AC_d98AAAAC/document-email.gif"
+          // src="https://c.tenor.com/Trqn0AC_d98AAAAC/document-email.gif"
           style={{ height: "100%", width: "100%" }}
         />
         <br />

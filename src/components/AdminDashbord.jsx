@@ -151,7 +151,7 @@ export default class MainDashboard extends Component {
 										</div>
 									</div>
 									{/* 06 */}
-									{/* <div class="col-md-3">
+									<div class="col-md-3">
 										<div className="card-container">
 											<div class="card text-center" style={{ backgroundColor: "#F9FAFC" }}>
 												<div class="card-block">
@@ -159,20 +159,21 @@ export default class MainDashboard extends Component {
 													<img
 														style={{ height: 130, width: 180 }}
 														class="rounded-circle"
-														src={image2}
+														src="https://www.pcworld.com/wp-content/uploads/2022/07/gmail_logo-100758589-orig.jpg?quality=50&strip=all"
 														alt="Card image cap"
 													/>
 													<h4 class="card-title"></h4>
 													<button type="button" class="btn btn-light btn-lg">
-														<a href="#" style={{ textDecoration: "none", color: "Info" }}>
+														<a href="/mailer" style={{ textDecoration: "none", color: "Info" }}>
 															{" "}
-															06{" "}
+															<h4>Send Mail<br/>&nbsp;</h4>
+															{" "}
 														</a>
 													</button>
 												</div>
 											</div>
 										</div>
-									</div> */}
+									</div>
 									{/* 07 */}
 									{/* <div class="col-md-3">
 										<div className="card-container">
