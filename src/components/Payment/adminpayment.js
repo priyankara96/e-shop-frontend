@@ -19,8 +19,8 @@ export default class adminpayment extends Component {
                 <button  type="button" class="btn btn-outline-info" style={{width:'220px', height:'70px'}}>
 								<h2> <a href='/payment/tablehome'>View Payment Summary</a></h2></button>
                 <br/><br/> <br/><br/>
-                <button  type="button" class="btn btn-outline-info" style={{width:'220px', height:'60px', }}>
-                  <h2 ><a href='/report' >Generate Report</a></h2></button>
+                {/* <button  type="button" class="btn btn-outline-info" style={{width:'220px', height:'60px', }}>
+                  <h2 ><a href='/report' >Generate Report</a></h2></button> */}
                 
 							</div>
 						</div>

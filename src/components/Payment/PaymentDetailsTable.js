@@ -100,7 +100,7 @@ handleSearchArea = (e) =>{
       <div className="container">
         <div className="row">
           <div className="col-lg-9 mt-2 mb-2">
-          <h4>Payment List For Admin </h4>
+         <h4> <b>Payment List For Admin </b></h4>
           </div>
           <div className="col-lg-3 mt-2 mb-2">
             <input
@@ -159,8 +159,25 @@ handleSearchArea = (e) =>{
         </table>
 
 
-        <button className="btn btn-success" style={{marginTop:"50px"}}><a href="/add" style={{textDecoration:'none',color:'white'}}> New Payment</a></button>
-        <br/>
+        {/* <button className="btn btn-success" style={{marginTop:"50px"}}><a href="/add" style={{textDecoration:'none',color:'white'}}> New Payment</a></button> */}
+       <br/>
+       <br/>
+
+
+        <div class="center">
+					<div class="pagination">
+						<a href="#">&laquo;</a>
+
+						<a href="#" class="active">
+							1
+						</a>
+						<a href="#">2</a>
+						<a href="#">&raquo;</a>
+
+            
+					</div>
+           <br/>
+				</div>
         
       </div>
     )
