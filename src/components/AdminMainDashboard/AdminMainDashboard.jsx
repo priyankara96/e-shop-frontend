@@ -4,7 +4,7 @@ import { Button } from "primereact/button";
 import { Chart } from "primereact/chart";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
-//import "primeflex/primeflex.css";
+import "primeflex/primeflex.css";
 import { Dialog } from "primereact/dialog";
 import { InputText } from "primereact/inputtext";
 import { InputTextarea } from "primereact/inputtextarea";
@@ -54,6 +54,25 @@ const AdminMainDashBoard = () => {
 	const [lineOptions, setLineOptions] = useState(null);
 	const [submitted, setSubmitted] = useState(false);
 	const [clientMessageDialog, setClientMessageDialog] = useState(false);
+	const [chartData1, setChartData1] = useState({
+		labels: ["", ""],
+		datasets: [
+			{
+				data: [0, 0],
+				backgroundColor: ["#", "#"],
+				hoverBackgroundColor: ["#", "#"],
+			},
+		],
+	});
+	const [lightOptions] = useState({
+		plugins: {
+			legend: {
+				labels: {
+					color: "#495057",
+				},
+			},
+		},
+	});
 
 	const toast = useRef(null);
 	const dt = useRef(null);
@@ -63,16 +82,23 @@ const AdminMainDashBoard = () => {
 	}, []);
 
 	const getDashboardMasterData = () => {
-		dashboardService
-			.getDashboardMasterData()
-			.then((response) => {
-				setDeliveryServicesCount(response.data.deliveryServicesCount);
-				setTotalUsersCount(response.data.totalUsersCount);
-				setTotalPendingOrdersCount(response.data.totalPendingOrdersCount);
-				setTotalMessagesCount(response.data.totalMessagesCount);
-				setClientMessages(response.data.clientMessages);
-			})
-			.catch((error) => {});
+		dashboardService.getDashboardMasterData().then((response) => {
+			setDeliveryServicesCount(response.data.deliveryServicesCount);
+			setTotalUsersCount(response.data.totalUsersCount);
+			setTotalPendingOrdersCount(response.data.totalPendingOrdersCount);
+			setTotalMessagesCount(response.data.totalMessagesCount);
+			setClientMessages(response.data.clientMessages);
+			setChartData1({
+				labels: ["Sales", "Orders"],
+				datasets: [
+					{
+						data: [response.data.totalSalesCount, response.data.totalPendingOrdersCount],
+						backgroundColor: ["#42A5F5", "#66BB6A"],
+						hoverBackgroundColor: ["#64B5F6", "#81C784"],
+					},
+				],
+			});
+		});
 	};
 
 	const openClientMessageDialog = (rowData) => {
@@ -236,9 +262,15 @@ const AdminMainDashBoard = () => {
 						</div>
 					</div>
 					<div className="col-12 xl:col-6">
-						<div className="card" style={{ height: "28vw" }}>
+						<div className="card" style={{ height: "23vw" }}>
 							<h5>Sales Overview</h5>
-							<Chart type="line" style={{ height: "35vw" }} data={lineData} options={lineOptions} />
+
+							<Chart
+								type="pie"
+								data={chartData1}
+								options={lightOptions}
+								style={{ position: "relative", width: "40%" }}
+							/>
 						</div>
 					</div>
 				</div>
@@ -255,21 +287,21 @@ const AdminMainDashBoard = () => {
 			>
 				<div className="field">
 					<label htmlFor="name">Customer Name </label>
-					<InputText id="name" value={clientMessage.name} required />
+					<InputText id="name" value={clientMessage.name} required disabled />
 				</div>
 				<div className="field">
 					<label htmlFor="email">Email </label>
-					<InputText id="email" value={clientMessage.email} required />
+					<InputText id="email" value={clientMessage.email} required disabled />
 				</div>
 				<div className="field">
 					<label htmlFor="mobileNumber">Telephone Number </label>
-					<InputText id="mobileNumber" value={clientMessage.mobileNumber} required />
+					<InputText id="mobileNumber" value={clientMessage.mobileNumber} required disabled />
 				</div>
 				<div className="field">
 					<label htmlFor="message" style={{ fontSize: "10px" }}>
 						Message
 					</label>
-					<InputTextarea id="message" value={clientMessage.message} required rows={3} cols={20} />
+					<InputTextarea id="message" value={clientMessage.message} required rows={3} cols={20} disabled />
 				</div>
 				<Button
 					label="Mark as Read"
