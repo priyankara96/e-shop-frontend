@@ -92,7 +92,7 @@ const AdminMainDashBoard = () => {
 				labels: ["Sales", "Orders"],
 				datasets: [
 					{
-						data: [response.data.totalPendingOrdersCount, response.data.totalPendingOrdersCount],
+						data: [response.data.totalSalesCount, response.data.totalPendingOrdersCount],
 						backgroundColor: ["#42A5F5", "#66BB6A"],
 						hoverBackgroundColor: ["#64B5F6", "#81C784"],
 					},
