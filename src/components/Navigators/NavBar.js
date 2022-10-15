@@ -38,8 +38,10 @@ export class NavBar extends Component {
 						<button className="imagebutton" style={{ marginRight: "1%" }}>
 							<img src={cart} style={{ width: "50px", height: "50px" }} />
 						</button>
-							
-						<button className="imagebutton" style={{ marginRight: "1%" }} > {/* href="/Profile" */}
+
+						<button className="imagebutton" style={{ marginRight: "1%" }}>
+							{" "}
+							{/* href="/Profile" */}
 							<img src={user} style={{ width: "50px", height: "50px" }} />
 						</button>
 
